@@ -42,13 +42,13 @@ ul.headernavlist li a,
     float: left;
 }
 
-.bodyclass {
+.body-header {
     margin-left: 15%;
     margin-right: 15%;
     margin-top: 2%;
 }
 
-.bodyclass {
+.body-header {
     background-color: #f7f7f7;
 }
 
@@ -83,11 +83,11 @@ ul.headernavlist li a:hover {
         float: right;
     }
     .headerright ul {
-        padding-left: 100px;
+        padding-left: 60px;
     }
     .headerright.navBarOpen {
         height: 100%;
-        width: 28%;
+        width: 32%;
         position: fixed;
         z-index: 1;
         top: 0;
@@ -100,17 +100,17 @@ ul.headernavlist li a:hover {
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 570px) {
     ul.headernavlist li a,
     .icon a {
-        font-size: .75em;
+        font-size: 75%;
     }
     .headernavlist .closebtn    {
-        font-size: 36px;
+        font-size: 225%;
         font-weight: bold;
     }
-    .bodyclass {
-        margin-left: 0%;
+    .body-header {
+        margin-left: 2%;
         margin-right: 4%;
         margin-top: 2%;
     }
@@ -121,6 +121,7 @@ ul.headernavlist li a:hover {
 
 
 /* BEGIN CARD STYLING */
+
 
 
 /* END CARD STYLING */

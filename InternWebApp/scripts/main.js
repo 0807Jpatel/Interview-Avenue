@@ -9,3 +9,4 @@ function closeNav() {
     var x = document.getElementById("mySidenav");
     x.className = "headerright";
 }
+
