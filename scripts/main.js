@@ -5,7 +5,7 @@ function openNav() {
 }
 
 function closeNav() {
-    document.getElementById("navHeaderList").style.display = "none";
+    document.getElementById("navHeaderList").style.removeProperty('display');
     var x = document.getElementById("mySidenav");
     x.className = "headerright";
 }

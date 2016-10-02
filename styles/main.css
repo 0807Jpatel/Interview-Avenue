@@ -3,6 +3,10 @@
 
 /* NAVBAR STYLING*/
 
+.headernavlist {
+    display: inline-block;
+}
+
 ul.headernavlist {
     list-style-type: none;
     margin: 0;
