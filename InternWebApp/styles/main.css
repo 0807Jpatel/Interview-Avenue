@@ -100,7 +100,7 @@ ul.headernavlist li a:hover {
     }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 500px) {
     ul.headernavlist li a,
     .icon a,
     .headernavlist .closebtn {
