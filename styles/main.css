@@ -44,15 +44,32 @@ ul.headernavlist li a:hover{
      color:#00BCD4;
 }
 
-@media screen and (max-width:680px) {
+ul.headernavlist li.icon {display: none;}
+
+@media screen and (max-width: 980px) {
   ul.headernavlist li:not(:first-child) {display: none;}
-  ul.headnavlist li.icon {
-    float: right;
-    display: inline-block;
+  ul.headernavlist li.icon {display: inline;}
+  .headerleft   {
+      float: right;
+  }
+  .headerright{
+    float: left;
+  }
+  .headernavlist    {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
   }
 }
 
-@media screen and (max-width:680px) {
+@media screen and (max-width: 980px) {
   ul.headernavlist.responsive {position: relative;}
   ul.headernavlist.responsive li.icon {
     position: absolute;
