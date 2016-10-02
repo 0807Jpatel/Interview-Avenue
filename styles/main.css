@@ -40,6 +40,6 @@ ul.headernavlist li a {
     background-color: #f7f7f7;
 }
 
-ul.headernavlist li a::hover{
-     color: red;
+ul.headernavlist li a:hover{
+     color:#00BCD4;
 }
