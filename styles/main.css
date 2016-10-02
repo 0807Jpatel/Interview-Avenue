@@ -43,3 +43,28 @@ ul.headernavlist li a {
 ul.headernavlist li a:hover{
      color:#00BCD4;
 }
+
+@media screen and (max-width:680px) {
+  ul.headernavlist li:not(:first-child) {display: none;}
+  ul.headnavlist li.icon {
+    float: right;
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width:680px) {
+  ul.headernavlist.responsive {position: relative;}
+  ul.headernavlist.responsive li.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  ul.headernavlist.responsive li {
+    float: none;
+    display: inline;
+  }
+  ul.headernavlist.responsive li a {
+    display: block;
+    text-align: left;
+  }
+}
