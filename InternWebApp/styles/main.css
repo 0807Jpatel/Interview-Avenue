@@ -83,11 +83,11 @@ ul.headernavlist li a:hover {
         float: right;
     }
     .headerright ul {
-        padding-left: 60px;
+        padding-left: 100px;
     }
     .headerright.navBarOpen {
         height: 100%;
-        width: 32%;
+        width: 29%;
         position: fixed;
         z-index: 1;
         top: 0;
