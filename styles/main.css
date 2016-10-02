@@ -1,87 +1,111 @@
 /*This is the main css file for all the styles*/
 
+
 /* NAVBAR STYLING*/
+
 ul.headernavlist {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
-ul.headernavlist li {
+ul.headernavlist {
     float: right;
     margin-top: 15px;
 }
 
-ul.headernavlist li a {
-  font-family: 'ceragr-bolduploaded_file',Arial,sans-serif;  
-  font-weight: 600;
-  display: inline-block;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  transition: 0.3s;
-  color: #9c9d9f;
-  text-transform: uppercase;
-  font-size: 1.0em;
+ul.headernavlist li {
+    display: inline-block;
 }
 
-.headerleft{
-    float:left;
+ul.headernavlist li a,
+.icon a,
+.headernavlist .closebtn {
+    font-family: 'ceragr-bolduploaded_file', Arial, sans-serif;
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    color: #9c9d9f;
+    text-transform: uppercase;
+    font-size: 1.1em;
 }
 
-.header{
+.headerleft {
+    float: left;
+}
+
+.header {
     margin-left: 15%;
     margin-right: 15%;
     margin-top: 2%;
 }
 
-.bodyclass{
+.bodyclass {
     background-color: #f7f7f7;
 }
 
-ul.headernavlist li a:hover{
-     color:#00BCD4;
+ul.headernavlist li a:hover {
+    color: #00BCD4;
 }
 
-ul.headernavlist li.icon {display: none;}
-
-@media screen and (max-width: 980px) {
-  ul.headernavlist li:not(:first-child) {display: none;}
-  ul.headernavlist li.icon {display: inline;}
-  .headerleft   {
-      float: right;
-  }
-  .headerright{
-    float: left;
-  }
-  .headernavlist    {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-  }
+.icon {
+    display: none;
 }
 
-@media screen and (max-width: 980px) {
-  ul.headernavlist.responsive {position: relative;}
-  ul.headernavlist.responsive li.icon {
+.headernavlist .closebtn {
     position: absolute;
-    right: 0;
     top: 0;
-  }
-  ul.headernavlist.responsive li {
-    float: none;
-    display: inline;
-  }
-  ul.headernavlist.responsive li a {
-    display: block;
-    text-align: left;
-  }
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    display: none;
+}
+
+@media screen and (max-width: 1000px) {
+    .headernavlist {
+        display: none;
+    }
+    .icon {
+        display: inline;
+    }
+    .headernavlist .closebtn {
+        display: block;
+    }
+    .headerleft {
+        float: right;
+    }
+    .headerright ul {
+        padding-left: 100px;
+    }
+    .headerright.navBarOpen {
+        height: 100%;
+        width: 28%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        float: left;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    ul.headernavlist li a,
+    .icon a,
+    .headernavlist .closebtn {
+        font-size: .7em;
+    }
+}
+
+@media screen and (min-width: 981px) {
+    .headernavlist {
+        display: inline-block;
+    }
 }

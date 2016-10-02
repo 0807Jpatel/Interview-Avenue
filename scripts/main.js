@@ -1,8 +1,11 @@
-function myFunction() {
-    var x = document.getElementById("navHeaderList");
-    if (x.className === "headernavlist") {
-        x.className += " responsive";
-    } else {
-        x.className = "headernavlist";
-    }
+function openNav() {
+    document.getElementById("navHeaderList").style.display = "inline-block";
+    var x = document.getElementById("mySidenav");
+    x.className += " navBarOpen";
+}
+
+function closeNav() {
+    document.getElementById("navHeaderList").style.display = "none";
+    var x = document.getElementById("mySidenav");
+    x.className = "headerright";
 }

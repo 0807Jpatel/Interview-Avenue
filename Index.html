@@ -23,19 +23,19 @@
     <div class="header">
         <div class="headerleft">
             <img src="images/icons/icon-144x144.png" height="75px" width="75px">
-        </div>    
-        <div class="headerright">
+        </div>
+        <div class="icon">
+            <a href="javascript:void(0);" style="font-size:1.5em;" onclick="openNav()">☰</a>
+        </div>
+        <div class="headerright" id="mySidenav">
             <ul class="headernavlist" id="navHeaderList">
-                <li class="icon">
-                <a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()">☰</a>
-                </li>
-                 <li><a href="#about">About</a></li>
-                 <li><a href="#login">Login</a></li>
-                 <li><a href="#suggest">Suggest</a></li>
-                 <li><a href="#resouces">Resources</a></li>
-                 <li><a href="#internships">Internships</a></li>               
-                
-            </ul> 
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <li><a href="#internships">Internships</a></li>
+                <li><a href="#resouces">Resources</a></li>
+                <li><a href="#suggest">Suggest</a></li>
+                <li><a href="#login">Login</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
         </div>
     </div>
     <script type="text/javascript" src="scripts/main.js"></script>
