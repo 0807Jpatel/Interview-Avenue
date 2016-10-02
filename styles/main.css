@@ -1,0 +1,45 @@
+/*This is the main css file for all the styles*/
+
+/* NAVBAR STYLING*/
+ul.headernavlist {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+ul.headernavlist li {
+    float: right;
+    margin-top: 15px;
+}
+
+ul.headernavlist li a {
+  font-family: 'ceragr-bolduploaded_file',Arial,sans-serif;  
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  transition: 0.3s;
+  color: #9c9d9f;
+  text-transform: uppercase;
+  font-size: 1.0em;
+}
+
+.headerleft{
+    float:left;
+}
+
+.header{
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 2%;
+}
+
+.bodyclass{
+    background-color: #f7f7f7;
+}
+
+ul.headernavlist li a::hover{
+     color: red;
+}
