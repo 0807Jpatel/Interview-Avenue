@@ -4,7 +4,13 @@
     .header {
         clear: both;
         height: 90px;
+        width: 70%;
         margin-bottom: 10px;
+        padding-top: 20;
+        position: fixed;
+        z-index: 1;
+        background-color: #f7f7f7;
+        top: 0;
     }
     
     .headernavlist {
@@ -50,9 +56,6 @@
         margin-left: 15%;
         margin-right: 15%;
         margin-top: 2%;
-    }
-    
-    .body-header {
         background-color: #f7f7f7;
     }
     
@@ -204,7 +207,14 @@
     }
     /* END CARD STYLING */
     
+    .content {
+        padding-top: 10%;
+    }
+    
     @media screen and (max-width: 768px) {
+        .header {
+            width: 95%;
+        }
         ul.headernavlist li a,
         .icon a {
             font-size: 75%;
@@ -215,7 +225,7 @@
         }
         .body-header {
             margin-left: 2%;
-            margin-right: 4%;
+            margin-right: 2%;
             margin-top: 2%;
         }
         .card .companyLogo {
@@ -259,6 +269,9 @@
             position: absolute;
             right: 0;
             top: 0;
+        }
+        .content {
+            padding-top: 25%;
         }
     }
     /*TAG STYLES*/
