@@ -52,7 +52,7 @@
         padding: 14px 16px;
         text-decoration: none;
         transition: 0.3s;
-        color: #9c9d9f;
+        color: #d2d4d8;
         text-transform: uppercase;
         font-size: 1.1em;
     }
@@ -83,38 +83,6 @@
         font-size: 36px;
         margin-left: 60px;
         display: none;
-    }
-    
-    @media screen and (max-width: 1000px) {
-        .headernavlist {
-            display: none;
-        }
-        .icon {
-            display: inline;
-        }
-        .headernavlist .closebtn {
-            display: block;
-        }
-        .headerleft {
-            float: right;
-            padding-right: 10px;
-        }
-        .headerright ul {
-            padding-left: 100px;
-        }
-        .headerright.navBarOpen {
-            height: 100%;
-            width: 29%;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #111;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-            float: left;
-        }
     }
     /* END NAVBAR STYLING */
     /* BEGIN CARD STYLING */
@@ -220,6 +188,108 @@
     .content {
         padding-top: 6%;
     }
+    /*TAG STYLES*/
+    
+    .tag.html {
+        background: lightcoral;
+        color: black;
+    }
+    
+    .tag.html::before {
+        background: #fff;
+    }
+    
+    .tag.html::after {
+        background: #fff;
+        border-left: 10px solid lightcoral;
+    }
+    
+    .tag.css {
+        background: lightblue;
+        color: black;
+    }
+    
+    .tag.css::before {
+        background: #fff;
+    }
+    
+    .tag.css::after {
+        background: #fff;
+        border-left: 10px solid lightblue;
+    }
+    
+    .tag.python {
+        background: lightgreen;
+        color: black;
+    }
+    
+    .tag.python::before {
+        background: #fff;
+    }
+    
+    .tag.python::after {
+        background: #fff;
+        border-left: 10px solid lightgreen;
+    }
+    
+    .tag.cplus {
+        background: #B2577A;
+        color: black;
+    }
+    
+    .tag.cplus::before {
+        background: #fff;
+    }
+    
+    .tag.cplus::after {
+        background: #fff;
+        border-left: 10px solid #B2577A;
+    }
+    
+    @media screen and (max-width: 1000px) {
+        .headernavlist {
+            display: none;
+        }
+        .icon {
+            display: inline;
+        }
+        .headernavlist .closebtn {
+            display: block;
+        }
+        .headerleft {
+            float: right;
+            padding-right: 10px;
+        }
+        .headerright ul {
+            padding-left: 100px;
+        }
+        .headerright.navBarOpen {
+            height: 100%;
+            width: 29%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            float: left;
+        }
+        .card .companyLogo {
+            width: 21%;
+            background-size: 100% 86%;
+            left: 5;
+            top: 10;
+        }
+        .card .tagsdiv {
+            width: 73.4%;
+            left: 22%;
+        }
+        .content {
+            padding-top: 16%;
+        }
+    }
     
     @media screen and (max-width: 768px) {
         .header {
@@ -284,61 +354,4 @@
         .content {
             padding-top: 25%;
         }
-    }
-    /*TAG STYLES*/
-    
-    .tag.html {
-        background: lightcoral;
-        color: black;
-    }
-    
-    .tag.html::before {
-        background: #fff;
-    }
-    
-    .tag.html::after {
-        background: #fff;
-        border-left: 10px solid lightcoral;
-    }
-    
-    .tag.css {
-        background: lightblue;
-        color: black;
-    }
-    
-    .tag.css::before {
-        background: #fff;
-    }
-    
-    .tag.css::after {
-        background: #fff;
-        border-left: 10px solid lightblue;
-    }
-    
-    .tag.python {
-        background: lightgreen;
-        color: black;
-    }
-    
-    .tag.python::before {
-        background: #fff;
-    }
-    
-    .tag.python::after {
-        background: #fff;
-        border-left: 10px solid lightgreen;
-    }
-    
-    .tag.cplus {
-        background: #B2577A;
-        color: black;
-    }
-    
-    .tag.cplus::before {
-        background: #fff;
-    }
-    
-    .tag.cplus::after {
-        background: #fff;
-        border-left: 10px solid #B2577A;
     }
