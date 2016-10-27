@@ -16,5 +16,17 @@ function closeNav() {
              .then(function() { console.log('Service Worker Registered'); });
   }
 
-  
+$.ajax({
+    url: 'Data/interships.json',
+    datatype: 'json',
+    type: 'get',
+    cache: true,
+    success: function(data){
+        $(data.internship).each(function(index, value){
+            var temp = document.getElementById("cardtemplate");
+            
+        });
+    }
+});
+
 
