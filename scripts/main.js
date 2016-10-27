@@ -16,3 +16,5 @@ function closeNav() {
              .then(function() { console.log('Service Worker Registered'); });
   }
 
+  
+

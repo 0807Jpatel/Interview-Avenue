@@ -3,7 +3,7 @@
     
     .header {
         clear: both;
-        height: 90px;
+        height: 10%;
         width: 100%;
         left: 0;
         margin-bottom: 10px;
@@ -134,7 +134,7 @@
         position: absolute;
         /* border: solid green 1px;*/
         float: right;
-        bottom: 3px;
+        bottom: 2%;
         left: 17.1%;
         overflow: hidden;
     }
@@ -186,7 +186,7 @@
     /* END CARD STYLING */
     
     .content {
-        padding-top: 6%;
+        padding-top: 7%;
     }
     /*TAG STYLES*/
     
@@ -246,7 +246,7 @@
         border-left: 10px solid #B2577A;
     }
     
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 1150px) {
         .headernavlist {
             display: none;
         }
@@ -318,6 +318,7 @@
         .card .tagsdiv {
             width: 73.4%;
             left: 25%;
+            bottom: 7%;
         }
         .card .companyName {
             top: 9;
@@ -326,7 +327,7 @@
         }
         .tag {
             background: #eee;
-            border-radius: 3px 0 0 3px;
+            border-radius: 3px 0 0 5px;
             color: #999;
             display: inline-block;
             height: 20px;
@@ -344,7 +345,7 @@
         .tag::after {
             background: #fff;
             border-bottom: 10px solid transparent;
-            border-left: 10px solid #eee;
+            border-left: 8px solid #eee;
             border-top: 10px solid transparent;
             content: '';
             position: absolute;
