@@ -23,8 +23,8 @@ $.ajax({
     cache: true,
     success: function(data){
         $(data.internship).each(function(index, value){
-            var temp = document.getElementById("cardtemplate");
-            
+            var clone =  $('#cardtemplate').clone().prop({ id: index}).insertBefore("#cardtemplate");
+            clone.removeAttr('style'); 
         });
     }
 });
