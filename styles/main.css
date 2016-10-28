@@ -190,16 +190,16 @@
     }
     /*TAG STYLES*/
     
-    .tag.html {
+    .tag.HTML {
         background: lightcoral;
         color: black;
     }
     
-    .tag.html::before {
+    .tag.HTML::before {
         background: #fff;
     }
     
-    .tag.html::after {
+    .tag.HTML::after {
         background: #fff;
         border-left: 10px solid lightcoral;
     }
@@ -244,6 +244,20 @@
     .tag.cplus::after {
         background: #fff;
         border-left: 10px solid #B2577A;
+    }
+
+    .tag.java {
+        background: #FFA500;
+        color: black;
+    }
+    
+    .tag.java::before {
+        background: #fff;
+    }
+    
+    .tag.java::after {
+        background: #fff;
+        border-left: 10px solid #FFA500;
     }
     
     @media screen and (max-width: 1150px) {

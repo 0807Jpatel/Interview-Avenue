@@ -19,6 +19,26 @@
             "Tag": [
                 "CSS", "C++", "Java"
             ]
+        },
+         {
+            "id": 0,
+            "name": "Reddit",
+            "URL": "http://reddit.com",
+            "CompanyLogo": "images/logos/reddit.png",
+            "Date": "23/45/2016",
+            "Tag": [
+                "Java", "HTML", "CSS", "Python"
+            ]
+        },
+         {
+            "id": 0,
+            "name": "League of Legends",
+            "URL": "http://play.na.leagueoflegends.com/en_US",
+            "CompanyLogo": "images/logos/League.png",
+            "Date": "23/45/2016",
+            "Tag": [
+                "C++", "Python"
+            ]
         }
     ]
 }
