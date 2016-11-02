@@ -18,17 +18,13 @@ app.get('/login', function (req, res) {
     if (err) {
       console.log("you fucked up", err);
     } else {
-      console.log(db.databaseName);
       var collection = db.collection('student');
-      collection.find().toArray(function(err, result) {
-        console.log(collection.collectionName);
-      });
-      console.log(collection);
       collection.find({}).toArray(function(err, result){
          console.log(result.length);
           if(err){
               console.log("you fucked up again");
           }else if(result.length){
+              console.log(collection.collectionName);
               console.log(result);
           }else{
               console.log("no doc");
