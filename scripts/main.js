@@ -17,7 +17,7 @@ function closeNav() {
   }
 
 $.ajax({
-    url: 'Data/interships.json',
+    url: 'companies_info/interships.json',
     datatype: 'json',
     type: 'get',
     cache: true,
