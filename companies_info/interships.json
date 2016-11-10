@@ -21,7 +21,7 @@
             ]
         },
          {
-            "id": 0,
+            "id": 2,
             "name": "Reddit",
             "URL": "http://reddit.com",
             "CompanyLogo": "images/logos/reddit.png",
@@ -31,7 +31,7 @@
             ]
         },
          {
-            "id": 0,
+            "id": 3,
             "name": "League of Legends",
             "URL": "http://play.na.leagueoflegends.com/en_US",
             "CompanyLogo": "images/logos/League.png",
