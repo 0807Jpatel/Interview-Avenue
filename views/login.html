@@ -18,26 +18,24 @@
     <link rel="stylesheet" type="text/css" href="../styles/main.css">
     <link rel="manifest" href="manifest.json">
 
+    <script>
+        function whatever(googleUser){
+            console.log("from whatever");
+        }
+    </script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="../scripts/app.js"></script>
+
 </head>
 
 <body class="body-header">
-
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script type="text/javascript" src="../server.js"></script>
-    <meta name="google-signin-client_id" content="539619981513-90cihnui62tlcgetpkcfkokle3jvrm3g.apps.googleusercontent.com">
-    <meta name="google-signin-cookiepolicy" content="single_host_origin">
-    <meta name="google-signin-scope" content="profile email">
-
     <div class="header">
-
         <div class="headerleft">
             <img src="../images/icons/icon-144x144.png" height="75px" width="75px">
         </div>
-
         <div class="icon" id="iconid">
             <a href="javascript:void(0);" style="font-size:1.5em;" onclick="openNav()">☰</a>
         </div>
-
         <div class="headerright" id="mySidenav">
             <ul class="headernavlist" id="navHeaderList">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -48,23 +46,13 @@
                 <li><a href="#about">About</a></li>
             </ul>
         </div>
-
     </div>
 
     <div class="content" id="content">
         <div class="card" id="cardtemplate">
-            <p style="position:relative; left: 50%; top: 5%;">Log In</p>
-            <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" style="position: relative; left: 47%; top: 35%;"></div>
+            <!--style="position: relative; left: 47%; top: 35%;"    -->
         </div>
     </div>
-    
-    
-    
-    
-    
-
-        
-
 </body>
 
 </html>
