@@ -16,11 +16,8 @@ provider.addScope('')
 var googleLoginBtn2 = document.getElementById("googleLoginBtn");
 
 googleLoginBtn.addEventListener('click', e => {
-    firebase.auth().signInWithPopup(provider).then(function (result) {
-        var token = result.credential.accessToken;
-        var user = result.user;
-        console.log(user);
-    }).catch(function (error) {
+    firebase.auth().signInWithPopup(provider)
+    .catch(function (error) {
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log(errorMessage + '\n');
@@ -28,5 +25,9 @@ googleLoginBtn.addEventListener('click', e => {
         console.log(email + '\n');
         var credential = error.credential;
     });
+})
+
+firebase.auth().onAuthStateChanged(function(user){
+    console.log(user);
 })
 
