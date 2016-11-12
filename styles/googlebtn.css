@@ -1,15 +1,19 @@
 #googleLoginBtn {
       display: inline-block;
       /*background: #4285f4;*/
-      background: white;
-      color: white;
+      background: dodgerblue;
+      color: black;
       width: 190px;
       /*border-radius: 5px;*/
       white-space: nowrap;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      font-weight: bold;
+      transition: all 0.3s ease 0s;
     }
     #googleLoginBtn:hover {
       cursor: pointer;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      background: white;
+      color: black;
     }
     span.label {
       font-weight: bold;
