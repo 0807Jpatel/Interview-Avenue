@@ -6,25 +6,14 @@
     <title>InternWebApp</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--<meta name="description" content="Progressive WebApp used to find internship">-->
-
-
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--<meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Weather PWA">
     <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
-
     <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
-    <meta name="msapplication-TileColor" content="#2F3BA2">
+    <meta name="msapplication-TileColor" content="#2F3BA2">-->
+    <link rel="manifest" href="../manifest.json">
     <link rel="stylesheet" type="text/css" href="../styles/main.css">
-    <link rel="manifest" href="manifest.json">
-
-    <script>
-        function whatever(googleUser){
-            console.log("from whatever");
-        }
-    </script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="../scripts/app.js"></script>
 
 </head>
 
@@ -42,7 +31,7 @@
                 <li><a href="/">Internships</a></li>
                 <li><a href="#resouces">Resources</a></li>
                 <li><a href="#suggest">Suggest</a></li>
-                <li><a href="/views/login.html">Login</a></li>
+                <li><a href="views/login.html">Login</a></li>
                 <li><a href="#about">About</a></li>
             </ul>
         </div>
@@ -50,9 +39,14 @@
 
     <div class="content" id="content">
         <div class="card" id="cardtemplate">
-            <!--style="position: relative; left: 47%; top: 35%;"    -->
+            <button id="googleLoginBtn" type="button">Google Login</button>
         </div>
     </div>
+
+
+    <!--FIREBASE SDK JS-->
+    <script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
+    <script src="../scripts/app.js"></script>
 </body>
 
 </html>
