@@ -14,6 +14,10 @@
     <meta name="msapplication-TileColor" content="#2F3BA2">-->
     <link rel="manifest" href="../manifest.json">
     <link rel="stylesheet" type="text/css" href="../styles/main.css">
+    <!--button css-->
+    
+    <meta name="google-signin-client_id" content="539619981513-90cihnui62tlcgetpkcfkokle3jvrm3g.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 
 </head>
 
@@ -39,7 +43,11 @@
 
     <div class="content" id="content">
         <div class="card" id="cardtemplate">
-            <button id="googleLoginBtn" type="button">Google Login</button>
+            <div id="googleLoginBtn">Google Login</button>
+            <script>
+        function renderButton() { gapi.signin2.render('googleLoginBtn', { 'width': 240, 'height': 50, 'longtitle':
+true, 'theme': 'dark' }); }
+    </script>
         </div>
     </div>
 
@@ -47,6 +55,8 @@
     <!--FIREBASE SDK JS-->
     <script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
     <script src="../scripts/app.js"></script>
+
+    
 </body>
 
 </html>
