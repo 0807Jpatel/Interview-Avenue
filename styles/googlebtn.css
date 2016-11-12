@@ -18,10 +18,13 @@
     #googleLoginImg:hover {
       cursor: pointer;
       transition: all 0.3s ease 0s;
-      -webkit-filter: drop-shadow(5px 5px 5px #222);
+      -webkit-filter: drop-shadow(5px 15px 5px #222);
       filter: drop-shadow(5px 5px 5px #222);
     }
 
+    #googleLoginImg{
+      height: 60px;
+    }
     /*
     span.label {
       font-weight: bold;
