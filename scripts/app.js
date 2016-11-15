@@ -1,19 +1,11 @@
-//Initialize Firebase
-var config = {
-    apiKey: "AIzaSyDMINrJm6ARcDPFuBOI3eHNeDPDmZkDNU0",
-    authDomain: "internwebapp-b3703.firebaseapp.com",
-    databaseURL: "https://internwebapp-b3703.firebaseio.com",
-    storageBucket: "internwebapp-b3703.appspot.com",
-    messagingSenderId: "539619981513"
-};
-firebase.initializeApp(config);
-
 var provider = new firebase.auth.GoogleAuthProvider();
 provider.addScope('email');
 provider.addScope('profile');
 provider.addScope('')
 
 var googleLoginBtn2 = document.getElementById("googleLoginBtn");
+var googleLogOut = document.getElementById("SignOutButton");
+
 
 googleLoginBtn.addEventListener('click', e => {
     firebase.auth().signInWithPopup(provider)
@@ -27,7 +19,19 @@ googleLoginBtn.addEventListener('click', e => {
     });
 })
 
+googleLogOut.addEventListener('click', e=>{
+    firebase.auth().signOut();
+})
+
+
 firebase.auth().onAuthStateChanged(function(user){
-    console.log(user);
+    if(user){
+        googleLoginBtn2.style.display = "none";
+        googleLogOut.style.removeProperty('display');
+        console.log(user.displayName);
+    }else{
+        googleLogOut.style.display = "none";
+        googleLoginBtn2.style.removeProperty('display');
+    }
 })
 

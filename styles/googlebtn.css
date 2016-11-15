@@ -1,50 +1,30 @@
 #googleLoginBtn {
-      display: inline-block;
-      /*background-image: url('../images/logos/btn_google_signin_dark_normal_web@2x.png');*/
-      width: 380px;
-      height: 92px;
-      /*background: #4285f4;*/
-      /*
-      background: dodgerblue;
-      color: black;
-      width: 190px;
-      /*border-radius: 5px;*/ /*
-      white-space: nowrap;
-      font-weight: bold;
-      transition: all 0.3s ease 0s;*/
-    }
+  display: inline-block;
+  /*background-image: url('../images/logos/btn_google_signin_dark_normal_web@2x.png');*/
+  width: 380px;
+  height: 92px;
+}
 
 
-    #googleLoginImg:hover {
-      cursor: pointer;
-      transition: all 0.3s ease 0s;
-      -webkit-filter: drop-shadow(5px 15px 5px #222);
-      filter: drop-shadow(5px 5px 5px #222);
-    }
+#googleLoginImg:hover {
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  -webkit-filter: drop-shadow(5px 15px 5px #222);
+  filter: drop-shadow(5px 5px 5px #222);
+}
 
-    #googleLoginImg{
-      height: 60px;
-    }
-    /*
-    span.label {
-      font-weight: bold;
-    }
-    span.icon {
-      background: url('../images/logos/g-normal.png') transparent 5px 50% no-repeat;
-      display: inline-block;
-      vertical-align: middle;
-      width: 42px;
-      height: 42px;
-      border-right: #2265d4 1px solid;
-    }
-    span.buttonText {
-      display: inline-block;
-      vertical-align: middle;
-      padding-left: 42px;
-      padding-right: 42px;
-      font-size: 14px;
-      font-weight: bold;
-       Use the Roboto font that is loaded in the <head> 
-      font-family: 'Roboto', sans-serif;
-      color: darkgray;
-    }*/
+#googleLoginImg{
+  height: 60px;
+}
+
+#SignOutButton{
+  height: 60px;
+  width: 240px;
+}
+
+#SignOutButton:hover {
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  -webkit-filter: drop-shadow(5px 15px 5px #222);
+  filter: drop-shadow(5px 5px 5px #222);
+}
