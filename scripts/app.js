@@ -26,8 +26,8 @@ googleLogOut.addEventListener('click', e=>{
 
 firebase.auth().onAuthStateChanged(function(user){
     if(user){
-        googleLoginBtn2.style.display = "none";
         googleLogOut.style.removeProperty('display');
+        googleLoginBtn2.style.display = "none";
         console.log(user.displayName);
     }else{
         googleLogOut.style.display = "none";
