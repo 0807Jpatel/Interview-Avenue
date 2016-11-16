@@ -35,23 +35,11 @@ firebase.auth().onAuthStateChanged(function(user){
         console.log(user.displayName);
         console.log(user.email);
         console.log(user.uid);
-        writeUserData(user.uid, user.displayName, user.email, user.photoURL);
-
-        var names = user.uid.split(' ');
-
-        suggest_li.style.removeProperty('display');
-        logout_li.style.removeProperty('display');
-        login_li.style.display = "none"
-        
+        writeUserData(user.uid, user.displayName, user.email, user.photoURL);   
 
     }else{
         googleLogOut.style.display = "none";
         googleLoginBtn2.style.removeProperty('display');
-
-        suggest_li.style.display = "none";
-        logout_li.style.display = "none";
-        login_li.style.removeProperty('display');
-
     }
 })
 
