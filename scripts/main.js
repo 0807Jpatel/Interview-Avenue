@@ -24,12 +24,5 @@ Company_Data.once('value').then(function (snapshot) {
 })
 
 
-firebase.auth().onAuthStateChanged(function(user){
-    if(user){
-        console.log(user.displayName);
-    }else{
-        console.log("No user logged in");
-    }
-})
 
 
