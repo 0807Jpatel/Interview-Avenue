@@ -23,6 +23,27 @@ Company_Data.once('value').then(function (snapshot) {
     })
 })
 
+var suggest_li = document.getElementById("suggest_li");
+var logout_li = document.getElementById("logout_li");
+var login_li = document.getElementById("login_li");
 
+firebase.auth().onAuthStateChanged(function(user){
+    if(user){
 
+        var names = user.uid.split(' ');
+
+        suggest_li.style.removeProperty('display');
+        logout_li.style.removeProperty('display');
+        login_li.style.display = "none"
+        
+        suggest_li.innerHTML(names[0]);
+
+    }else{
+
+        suggest_li.style.display = "none";
+        logout_li.style.display = "none";
+        login_li.style.removeProperty('display');
+
+    }
+})
 
