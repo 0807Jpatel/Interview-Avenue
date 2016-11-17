@@ -8,9 +8,10 @@ var database = firebase.database();
 var Company_Data = database.ref('Company_Data');
 
 Company_Data.once('value').then(function (snapshot) {
+    $("#content").empty();
     var index = 1;
     snapshot.forEach(function (company) {
-        var clone = $('#cardtemplate').clone().prop({ id: index++ }).insertBefore("#cardtemplate");
+        var clone = $('#cardtemplate').clone().prop({ id: index++ }).appendTo("#content");
         clone.removeAttr('style');
         var cl = clone.find('.companyLogo');
         cl.css("background-image", "url(" + company.child('CompanyLogo').val() + ")");

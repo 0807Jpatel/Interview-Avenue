@@ -16,6 +16,7 @@ googleLoginBtn.addEventListener('click', e => {
         console.log(email + '\n');
         var credential = error.credential;
     });
+    
 })
 
 firebase.auth().onAuthStateChanged(function(user){
@@ -26,13 +27,13 @@ firebase.auth().onAuthStateChanged(function(user){
         console.log(user.displayName);
         console.log(user.email);
         console.log(user.uid);
-        writeUserData(user.uid, user.displayName, user.email, user.photoURL);   
-        $("#a").load("views/content.html");
-
+        writeUserData(user.uid, user.displayName, user.email, user.photoURL);
+        LoadContent();
     }else{
         googleLogOut.style.display = "none";
         googleLoginBtn2.style.removeProperty('display');
     }
+    return;
 })
 
 function writeUserData(userId, name, email, imageUrl) {
