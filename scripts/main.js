@@ -26,17 +26,18 @@ Company_Data.once('value').then(function (snapshot) {
 var suggest_li = document.getElementById("suggest_li");
 var logout_li = document.getElementById("logout_li");
 var login_li = document.getElementById("login_li");
+var user_Name = document.getElementById("UserName");
 
 firebase.auth().onAuthStateChanged(function(user){
     if(user){
 
-        var names = user.uid.split(' ');
+        var names = user.displayName.split(' ');
 
         suggest_li.style.removeProperty('display');
         logout_li.style.removeProperty('display');
         login_li.style.display = "none"
         
-        suggest_li.innerHTML(names[0]);
+        user_Name.innerText = names[0];
 
     }else{
 

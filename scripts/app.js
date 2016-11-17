@@ -5,10 +5,6 @@ provider.addScope('')
 
 var googleLoginBtn2 = document.getElementById("googleLoginBtn");
 var googleLogOut = document.getElementById("SignOutButton");
-var suggest_li = document.getElementById("suggest_li");
-var logout_li = document.getElementById("logout_li");
-var login_li = document.getElementById("login_li");
-
 
 googleLoginBtn.addEventListener('click', e => {
     firebase.auth().signInWithPopup(provider)
@@ -22,11 +18,6 @@ googleLoginBtn.addEventListener('click', e => {
     });
 })
 
-googleLogOut.addEventListener('click', e=>{
-    firebase.auth().signOut();
-})
-
-
 firebase.auth().onAuthStateChanged(function(user){
     if(user){
         googleLogOut.style.removeProperty('display');
@@ -36,6 +27,7 @@ firebase.auth().onAuthStateChanged(function(user){
         console.log(user.email);
         console.log(user.uid);
         writeUserData(user.uid, user.displayName, user.email, user.photoURL);   
+        $("#a").load("views/content.html");
 
     }else{
         googleLogOut.style.display = "none";

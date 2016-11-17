@@ -19,3 +19,7 @@ function closeNav() {
     var x = document.getElementById("mySidenav");
     x.className = "headerright";
 }
+
+function LogOut(){
+    firebase.auth().signOut();
+}
