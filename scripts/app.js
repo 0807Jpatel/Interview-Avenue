@@ -43,7 +43,9 @@ function writeUserData(userId, name, email, imageUrl) {
   firebase.database().ref('Users/' + userId).set({
     username: name,
     email: email,
-    profile_picture : imageUrl
+    profile_picture : imageUrl,
+    favorites: [0, 1, 2],
+    hidden: [3, 4, 5]
   });
   console.log("User added to the database.");
 }
