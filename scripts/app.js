@@ -27,7 +27,10 @@ firebase.auth().onAuthStateChanged(function(user){
         console.log(user.displayName);
         console.log(user.email);
         console.log(user.uid);
+        
         writeUserData(user.uid, user.displayName, user.email, user.photoURL);
+
+
         LoadContent();
     }else{
         googleLogOut.style.display = "none";
