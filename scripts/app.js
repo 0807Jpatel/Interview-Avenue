@@ -29,9 +29,7 @@ firebase.auth().onAuthStateChanged(function(user){
         console.log(user.uid);
         
         writeUserData(user.uid, user.displayName, user.email, user.photoURL);
-
-
-        LoadContent();
+        LoadUser();
     }else{
         googleLogOut.style.display = "none";
         googleLoginBtn2.style.removeProperty('display');
@@ -44,7 +42,7 @@ function writeUserData(userId, name, email, imageUrl) {
     username: name,
     email: email,
     profile_picture : imageUrl,
-    favorites: [0, 1, 2],
+    favorites: [1, 2, 3, 6],
     hidden: [3, 4, 5]
   });
   console.log("User added to the database.");

@@ -22,4 +22,5 @@ function closeNav() {
 
 function LogOut(){
     firebase.auth().signOut();
+    LoadContent();
 }
