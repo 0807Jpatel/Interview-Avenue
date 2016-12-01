@@ -1,14 +1,14 @@
 var database = firebase.database();
 var Company_Data = database.ref('Company_Data');
+var user = firebase.auth().currentUser;
 
-firebase.auth().onAuthStateChanged(function(user){
     if(user){
         var user_data = database.ref('Users/'+user.uid);
         var favArray = user_data.child('favorites');
         favArray.once('value').then(function(snapshot){
            snapshot.forEach(function(company_id){
-               // console.log(company_id.val());    
-                console.log("for EAch");    
+               // console.log(company_id.val());       
+               console.log("in foreach loop");
                 var company = Company_Data.child(company_id.val());
                 company.once('value').then(function(currentCompany){
 
@@ -30,4 +30,3 @@ firebase.auth().onAuthStateChanged(function(user){
     }else{
         console.log("YOU SHALL NOT PASS!!!!");
     }
-})

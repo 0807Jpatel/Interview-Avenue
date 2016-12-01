@@ -1,4 +1,6 @@
 //Initialize Firebase
+var counter = 0;
+
 var config = {
     apiKey: "AIzaSyDMINrJm6ARcDPFuBOI3eHNeDPDmZkDNU0",
     authDomain: "internwebapp-b3703.firebaseapp.com",
@@ -22,5 +24,6 @@ function closeNav() {
 
 function LogOut(){
     firebase.auth().signOut();
+    counter = 0;
     LoadContent();
 }

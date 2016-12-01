@@ -29,7 +29,11 @@ firebase.auth().onAuthStateChanged(function(user){
         console.log(user.uid);
         
         writeUserData(user.uid, user.displayName, user.email, user.photoURL);
-        LoadUser();
+        counter++;
+        console.log("counter = " + counter);
+        if(counter == 1){
+           LoadUser();
+        }
     }else{
         googleLogOut.style.display = "none";
         googleLoginBtn2.style.removeProperty('display');

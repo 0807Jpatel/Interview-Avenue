@@ -35,7 +35,7 @@ firebase.auth().onAuthStateChanged(function(user){
 
         suggest_li.style.removeProperty('display');
         logout_li.style.removeProperty('display');
-        login_li.style.display = "none"
+        login_li.style.display = "none";
         
         user_Name.innerText = names[0];
 
