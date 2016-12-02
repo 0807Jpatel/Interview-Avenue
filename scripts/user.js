@@ -24,6 +24,8 @@ var user = firebase.auth().currentUser;
                     currentCompany.child('Tag').forEach(function (tagIndex) {
                         cn.append('<li class=\"tag ' + tagIndex.val() + '\">' + tagIndex.val() + "<\/li>");
                     })
+                    var cp = clone.find('.fav');
+                    cp.text("★");
                 })
             })
         })
