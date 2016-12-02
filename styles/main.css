@@ -379,3 +379,11 @@
             z-index:9999;
            position: relative;
   }
+
+    .hide{
+            float: right;
+            margin-right: 30px;
+            margin-top: 20px;
+            z-index:9999;
+           position: relative;
+  }
