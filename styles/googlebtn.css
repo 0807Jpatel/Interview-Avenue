@@ -3,6 +3,8 @@
   /*background-image: url('../images/logos/btn_google_signin_dark_normal_web@2x.png');*/
   width: 380px;
   height: 92px;
+  margin-top: 3%;
+  margin-left: 40%;
 }
 
 
@@ -15,16 +17,4 @@
 
 #googleLoginImg{
   height: 60px;
-}
-
-#SignOutButton{
-  height: 60px;
-  width: 240px;
-}
-
-#SignOutButton:hover {
-  cursor: pointer;
-  transition: all 0.3s ease 0s;
-  -webkit-filter: drop-shadow(5px 15px 5px #222);
-  filter: drop-shadow(5px 5px 5px #222);
 }

@@ -17,14 +17,14 @@ var user = firebase.auth().currentUser;
                     clone.removeAttr('style');
                     
                     var cl = clone.find('.companyLogo');
-                    cl.css("background-image", "url(" + currentCompany.child('CompanyLogo').val() + ")");
+                    cl.attr('src', currentCompany.child('CompanyLogo').val());
                     var cn = clone.find('.companyName');
                     cn.html(currentCompany.child('name').val());
                     var cn = clone.find('.tags');
                     currentCompany.child('Tag').forEach(function (tagIndex) {
                         cn.append('<li class=\"tag ' + tagIndex.val() + '\">' + tagIndex.val() + "<\/li>");
                     })
-                    var cp = clone.find('.fav');
+                    var cp = $(clone).find('.fav');
                     cp.text("★");
                 })
             })

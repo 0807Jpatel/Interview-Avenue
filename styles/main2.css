@@ -1,0 +1,97 @@
+.body-header {
+    margin-left: 16%;
+    margin-right: 16%;
+    margin-top: 2%;
+    background-color: #f7f7f7;
+}
+body{
+    background-color: #f7f7f7;
+}
+.fixed{
+    position: fixed;
+}
+
+.ImageFixDem{
+    height: 150px;
+    width: 150px;
+}
+
+.favButton{
+    float:right;
+    height: 10px;
+    margin-right: 20px;
+    margin-top: 4px;
+    position: relative;
+    font-size: 22px;
+    text-decoration: none;
+    color: #d81128;
+    font-weight: bold;
+}
+
+.hideButton{
+    float: right;
+    height: 10px;
+    margin-right: 7px;
+    margin-top: 4px;
+    position: relative;
+    font-size: 22px;
+    text-decoration: none;
+    color: #111;
+    font-weight: bold;
+}
+
+.tags {
+        list-style: none;
+        margin: 0;
+        overflow: hidden;
+        margin-top: -8;
+        /*padding: 5;*/
+        margin-bottom: -15;
+    }
+    
+    .tags li {
+        float: left;
+    }
+    
+    .tag {
+        background: #eee;
+        border-radius: 3px 0 0 3px;
+        color: #999;
+        display: inline-block;
+        height: 26px;
+        line-height: 26px;
+        padding: 0 20px 0 23px;
+        position: relative;
+        margin: 0 10px 10px 0;
+    }
+    
+    .tag::before {
+        background: #fff;
+        border-radius: 10px;
+        content: '';
+        height: 6px;
+        left: 10px;
+        width: 6px;
+        top: 10px;
+        position: absolute;
+    }
+    
+    .tag::after {
+        background: #fff;
+        border-bottom: 13px solid transparent;
+        border-left: 10px solid #eee;
+        border-top: 13px solid transparent;
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+}
+
+@media screen and (max-width: 992px) {
+    .body-header {
+        margin-left: 1%;
+        margin-right: 1%;
+        margin-top: 2%;
+        background-color: #f7f7f7;
+    }
+}

@@ -1,23 +1,22 @@
 <body>
     <div class="content" id="content">
     </div>
-    <div class="card" id="cardtemplate" style="display:none">
-            <div class="companyLogo"></div>
-            <div class="companyInfo">
-                <span class="companyName"> </span>
-                <span class="deadline"> </span>
-                <span class="description"></span>
-                <div class="Apply"> </div>
-            </div>
-            <div class="tagsdiv">
-                <ul class='tags'>
-                </ul>
-            </div>
-            <!--<a class="calendarlink" href="#"></a>-->
-            <!-- ☆ ★ -->
-            <a class="fav" id="favid" href="javascript:void(0)" onclick="return addtoFav(this);">☆</a>
-            <a class="hide" id="hideid" href="javascript:void(0)" onclick="return hideCardU(this);">⛔</a>
-
+    <div class="card horizontal" id="cardtemplate" style="display:none">
+      <div class="card-image">
+        <img class="companyLogo ImageFixDem" src="images/logos/facebook.png">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content companyInfo">
+          <h5 class="companyName"></h5>
+          <p>I am a very simple card. I am good at containing small bits of information.</p>
+        </div>
+        <div class="card-action tagsdiv">
+            <ul class='tags'>
+            </ul>
+        </div>
+    </div>
+    <a class="hideButton" id="hideid" href="javascript:void(0)" onclick="return hideCardU(this);">⛔</a>
+    <a class="fav favButton" id="favid" href="javascript:void(0)" onclick="return addtoFav(this);">☆</a>
     </div>
     <script type="text/javascript" src="../scripts/main.js"></script>
 </body>

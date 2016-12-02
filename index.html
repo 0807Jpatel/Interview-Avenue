@@ -6,8 +6,6 @@
     <title>InternWebApp</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--<meta name="description" content="Progressive WebApp used to find internship">-->
-
-
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Weather PWA">
@@ -15,12 +13,15 @@
 
     <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
     <meta name="msapplication-TileColor" content="#2F3BA2">
-    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" href="styles/main2.css">
+    <link rel="stylesheet" type="text/css" href="styles/tags.css">
+    <link rel="stylesheet" type="text/css" href="styles/materialize.min.css">
     <link rel="manifest" href="manifest.json">
 
 </head>
-<body class="body-header"> 
-       <div class="header">
+
+<body>
+    <!--<div class="header">
 
         <div class="headerleft">
             <img src="images/icons/icon-144x144.png" height="75px" width="75px">
@@ -34,21 +35,39 @@
             <ul class="headernavlist" id="navHeaderList">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-                <li><a href="javascript:void(0)" onclick="LoadContent()">internship</a></li>
-
-
-                <li><a href="#resouces">Resources</a></li>
-                <li id="suggest_li" style="display: none;"><a href="javascript:void(0)" onclick="LoadUser()" id="UserName"></a></li>
-                <li id="login_li" style="display: none;"><a href="javascript:void(0)" onclick="LoadLogin()">Login</a></li>
-                <li id="logout_li" style="display: none;"><a href="javascript:void(0)" onclick="LogOut()">Logout</a><li>
-                <li><a href="#about">About</a></li>
+                
             </ul>
         </div>
 
+    </div>-->
+    <div class="navbar-fixed">
+    <nav class="blue lighten-1">
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">Logo</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><span class="material-icons">☰</span></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="javascript:void(0)" onclick="LoadContent()">Internship</a></li>
+                <li><a href="#resouces">Resources</a></li>
+                <li id="suggest_li" style="display: none;"><a href="javascript:void(0)" onclick="LoadUser()" id="UserName"></a></li>
+                <li id="login_li" style="display: none;"><a href="javascript:void(0)" onclick="LoadLogin()">Login</a></li>
+                <li id="logout_li" style="display: none;"><a href="javascript:void(0)" onclick="LogOut()">Logout</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li><a href="javascript:void(0)" onclick="LoadContent()">Internship</a></li>
+                <li><a href="#resouces">Resources</a></li>
+                <li id="suggest_li2" style="display: none;"><a href="javascript:void(0)" onclick="LoadUser()" id="UserName2"></a></li>
+                <li id="login_li2" style="display: none;"><a href="javascript:void(0)" onclick="LoadLogin()">Login</a></li>
+                <li id="logout_li2" style="display: none;"><a href="javascript:void(0)" onclick="LogOut()">Logout</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </div>
+    </nav>
     </div>
 
-   <div id="a"></div>
-    <script type="text/javascript" src="scripts/jQuery.js" ></script>
+    <div class="body-header" id="a"></div>
+    <script type="text/javascript" src="scripts/jQuery.js"></script>
+    <script src="scripts/materialize.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
     <script src="../scripts/firebaseSetUp.js"></script>
     <script>
@@ -65,6 +84,7 @@
     function LoadForm(){
         $("#a").load("views/form.html")
     }
+        $(".button-collapse").sideNav();
     </script>
 
 </body>

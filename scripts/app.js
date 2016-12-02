@@ -4,8 +4,6 @@ provider.addScope('profile');
 provider.addScope('')
 
 var googleLoginBtn2 = document.getElementById("googleLoginBtn");
-var googleLogOut = document.getElementById("SignOutButton");
-
 googleLoginBtn.addEventListener('click', e => {
     firebase.auth().signInWithPopup(provider)
     .catch(function (error) {
@@ -23,7 +21,6 @@ firebase.auth().onAuthStateChanged(function(user){
     if(user){
         counter++;
         if(counter == 1){
-        googleLogOut.style.removeProperty('display');
         googleLoginBtn2.style.display = "none";
 
         console.log(user.displayName);
@@ -35,7 +32,6 @@ firebase.auth().onAuthStateChanged(function(user){
         LoadUser();
         }
     }else{
-        googleLogOut.style.display = "none";
         googleLoginBtn2.style.removeProperty('display');
     }
     return;

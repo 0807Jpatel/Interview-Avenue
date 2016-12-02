@@ -1,24 +1,23 @@
 <body>
     <div class="content" id="user_content">
     </div>
-    <div class="card" id="cardtemplate" style="display:none">
-            <div class="companyLogo"></div>
-            <div class="companyInfo">
-                <span class="companyName"> </span>
-                <span class="deadline"> </span>
-                <span class="description"></span>
-                <div class="Apply"> </div>
-            </div>
-            <div class="tagsdiv">
-                <ul class='tags'>
-                </ul>
-            </div>
-            <!--<a class="calendarlink" href="#"></a>-->
-            <!-- ☆ ★ -->
-            <a class="fav" id="favid" href="javascript:void(0)" onclick="return addtoFav(this);">☆</a>
+    <div class="card horizontal" id="cardtemplate" style="display:none">
+      <div class="card-image">
+        <img class="companyLogo ImageFixDem" src="images/logos/facebook.png">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content companyInfo">
+          <h5 class="companyName"></h5>
+          <p>I am a very simple card. I am good at containing small bits of information.</p>
+        </div>
+        <div class="card-action tagsdiv">
+            <ul class='tags'>
+            </ul>
+        </div>
     </div>
-    <div class="card">
-        <a href="javascript:void(0)" onclick="LoadForm()"> SUGGETS </a>
-    </div>
+    <a class="fav favButton" id="favid" href="javascript:void(0)" onclick="return addtoFav(this);">☆</a>
+  </div>
+
+    <button class="fixedbutton" onclick="LoadForm()"> SUGGEST </button>
     <script type="text/javascript" src="../scripts/user.js"></script>
 </body>

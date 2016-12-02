@@ -14,6 +14,7 @@ function addtoFav(item) {
         var par = $(item).parent().attr("id");
         var favorites = database.ref('Users/' + user.uid + "/favorites");
         favorites.once("value").then(function (snapshot) {
+            console.log(snapshot.child(parseInt(par)).val());
             var b = snapshot.child(parseInt(par)).exists(); // true
             if (!b) {
                 var updates = {};
@@ -28,7 +29,6 @@ function addtoFav(item) {
     } else {
         alert("Must be logged in to add to Favorite")
     }
-
 }
 
 
@@ -62,7 +62,7 @@ Company_Data.once('value').then(function (snapshot) {
         var clone = $('#cardtemplate').clone().prop({ id: index++ }).appendTo("#content");
         clone.removeAttr('style');
         var cl = clone.find('.companyLogo');
-        cl.css("background-image", "url(" + company.child('CompanyLogo').val() + ")");
+        cl.attr('src', company.child('CompanyLogo').val());
         var cn = clone.find('.companyName');
         cn.html(company.child('name').val());
         var cn = clone.find('.tags');
@@ -110,6 +110,10 @@ var suggest_li = document.getElementById("suggest_li");
 var logout_li = document.getElementById("logout_li");
 var login_li = document.getElementById("login_li");
 var user_Name = document.getElementById("UserName");
+var suggest_li2 = document.getElementById("suggest_li2");
+var logout_li2 = document.getElementById("logout_li2");
+var login_li2 = document.getElementById("login_li2");
+var user_Name2 = document.getElementById("UserName2");
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
@@ -121,12 +125,20 @@ firebase.auth().onAuthStateChanged(function (user) {
         login_li.style.display = "none";
 
         user_Name.innerText = names[0];
+        suggest_li2.style.removeProperty('display');
+        logout_li2.style.removeProperty('display');
+        login_li2.style.display = "none";
+
+        user_Name2.innerText = names[0];
 
     } else {
 
         suggest_li.style.display = "none";
         logout_li.style.display = "none";
         login_li.style.removeProperty('display');
+        suggest_li2.style.display = "none";
+        logout_li2.style.display = "none";
+        login_li2.style.removeProperty('display');
 
     }
 })

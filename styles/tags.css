@@ -1,0 +1,69 @@
+    .tag.HTML {
+        background: lightcoral;
+        color: black;
+    }
+    
+    .tag.HTML::before {
+        background: #fff;
+    }
+    
+    .tag.HTML::after {
+        background: #fff;
+        border-left: 10px solid lightcoral;
+    }
+    
+    .tag.css {
+        background: lightblue;
+        color: black;
+    }
+    
+    .tag.css::before {
+        background: #fff;
+    }
+    
+    .tag.css::after {
+        background: #fff;
+        border-left: 10px solid lightblue;
+    }
+    
+    .tag.python {
+        background: lightgreen;
+        color: black;
+    }
+    
+    .tag.python::before {
+        background: #fff;
+    }
+    
+    .tag.python::after {
+        background: #fff;
+        border-left: 10px solid lightgreen;
+    }
+    
+    .tag.cplus {
+        background: #B2577A;
+        color: black;
+    }
+    
+    .tag.cplus::before {
+        background: #fff;
+    }
+    
+    .tag.cplus::after {
+        background: #fff;
+        border-left: 10px solid #B2577A;
+    }
+
+    .tag.java {
+        background: #FFA500;
+        color: black;
+    }
+    
+    .tag.java::before {
+        background: #fff;
+    }
+    
+    .tag.java::after {
+        background: #fff;
+        border-left: 10px solid #FFA500;
+    }
