@@ -79,7 +79,7 @@ function hideCards(){
         var hide = database.ref('Users/' + user.uid + "/hidden");
         hide.once("value").then(function(snapshot){
             snapshot.forEach(function(hidden){
-                console.log(hidden.val());
+                // console.log(hidden.val());
                 document.getElementById(hidden.val()).remove();
             })
         })

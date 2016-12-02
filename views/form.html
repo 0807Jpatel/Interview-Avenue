@@ -8,33 +8,33 @@
   <form>
     <h1>Suggestion Form</h1> 
     <div class="form-group">
-      <input type="text" required="required"/>
+      <input id="NameField" type="text" required="required"/>
       <label for="input" class="control-label">Name*</label><i class="bar"></i>
     </div>
     <div class="form-group">
-      <input type="text" required="required"/>
-      <label for="input" class="control-label">Email*</label><i class="bar"></i>
+      <input id="EmailField" type="text" required="required"/>
+      <label for="input" class="control-label" >Email*</label><i class="bar"></i>
     </div>
     <div class="form-group">
-      <input type="text" required="required"/>
+      <input  id="CompanyName" type="text" required="required"/>
       <label for="input" class="control-label">Company Name*</label><i class="bar"></i>
     </div>
     <div class="form-group">
-      <input type="text" required="required"/>
-      <label for="input" class="control-label">URL*</label><i class="bar"></i>
+      <input id="URL" type="text" required="required"/>
+      <label for="input" class="control-label" >URL*</label><i class="bar"></i>
     </div>
     <div class="form-group">
-      <input type="text" required="required"/>
-      <label for="input" class="control-label">Deadline(MM/DD/YY)</label><i class="bar"></i>
+      <input id="DeadLine" type="text" required="required"/>
+      <label for="input" class="control-label" >Deadline(MM/DD/YY)</label><i class="bar"></i>
     </div>
     <div class="form-group">
-      <input type="text" required="required"/>
-      <label for="input" class="control-label">Locations</label><i class="bar"></i>
+      <input id="Locations" type="text" required="required"/>
+      <label for="input" class="control-label" >Locations</label><i class="bar"></i>
     </div>
 
     <div class="form-group">
-      <textarea required="required"></textarea>
-      <label for="textarea" class="control-label">Description</label><i class="bar"></i>
+      <textarea id="Description" required="required"></textarea>
+      <label for="textarea" class="control-label" >Description</label><i class="bar"></i>
     </div>
     
     <div class="checkbox">
@@ -89,7 +89,7 @@
     </div>
   </form>
   <div class="button-container">
-    <button type="button" class="button" onclick="sendEmail()"><span>Submit</span></button>
+    <button type="button" class="button" onclick="addSuggest()"><span>Submit</span></button>
   </div>
 </div>
     <script src="../scripts/form.js"></script>
