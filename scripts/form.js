@@ -1,12 +1,12 @@
 function addSuggest(){
     // get ids
-    var Name = document.getElementById("NameField");
-    var Email = document.getElementById("EmailField");
-    var CompanyName = document.getElementById("CompanyName");
-    var urllink = document.getElementById("URL");
-    var Deadline = document.getElementById("DeadLine");
-    var Locations = document.getElementById("Locations");
-    var Description = document.getElementById("Description");
+    var Name = document.getElementById("first_name");
+    var Email = document.getElementById("email");
+    var CompanyName = document.getElementById("company_name");
+    var urllink = document.getElementById("urllink");
+    var Deadline = document.getElementById("deadline");
+    var Locations = document.getElementById("location");
+    var Description = document.getElementById("description");
     var dateReg = /^\d{2}\/\d{2}\/\d{2}$/ ;
     var urlReg = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
     var emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
