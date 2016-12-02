@@ -23,7 +23,7 @@ function addSuggest(){
         var user = firebase.auth().currentUser;
         var database = firebase.database();
         var suggestions = database.ref('Suggestions/');
-        suggestions.push({
+        var uniqueID =   suggestions.push({
             name: Name.value,
             email: Email.value,
             CompanyName: CompanyName.value,
@@ -32,6 +32,9 @@ function addSuggest(){
             location: Locations.value,
             Description: Description.value
         });
+        var suggestionsPD = database.ref('Users/' + user.uid + "/suggestionsPD");
+        // var uniqueKey = (uniqueID.key).substring(1);
+        suggestionsPD.push(uniqueID.key);
         LoadUser();
         alert("Thank you!");
     }

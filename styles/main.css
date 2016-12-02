@@ -372,18 +372,27 @@
     }
 
 
-    .fav{
-            float: right;
-            margin-right: 20px;
-            margin-top: 20px;
-            z-index:9999;
-           position: relative;
-  }
+.fav{
+    float: right;
+    margin-right: 10px;
+    margin-top: 3px;
+    z-index:9999;
+    position: relative;
+    font-size: 40px;
+    text-decoration: none;
+    color: #d81128;
+    font-weight: bold;
+}
 
-    .hide{
-            float: right;
-            margin-right: 30px;
-            margin-top: 20px;
-            z-index:9999;
-           position: relative;
-  }
+.hide{
+    float: right;
+    margin-right: 20px;
+    margin-top: 3px;
+    z-index:9999;
+    position: relative;
+    font-size: 40px;
+    text-decoration: none;
+    color: #111;
+    font-weight: bold;
+}
+

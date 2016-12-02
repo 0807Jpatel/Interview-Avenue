@@ -13,15 +13,16 @@ function addtoFav(item) {
     if (user) {
         var par = $(item).parent().attr("id");
         var favorites = database.ref('Users/' + user.uid + "/favorites");
-
         favorites.once("value").then(function (snapshot) {
             var b = snapshot.child(parseInt(par)).exists(); // true
             if (!b) {
                 var updates = {};
                 updates[parseInt(par)] = parseInt(par);
                 favorites.update(updates);
+                item.innerText = "★";
             } else {
                 favorites.child(parseInt(par)).remove();
+                item.innerText = "☆";
             }
         })
     } else {
@@ -31,7 +32,7 @@ function addtoFav(item) {
 }
 
 
-function hideCardU(item) {
+function hideCardU(item) {  
     var user = firebase.auth().currentUser;
     if (user) {
         var par = $(item).parent().attr("id");
@@ -71,6 +72,7 @@ Company_Data.once('value').then(function (snapshot) {
         // action.append('<li class="fav" id="favid"></li>');
     })
     hideCards();
+    addFavIcon();
 })
 
 function hideCards(){
@@ -85,6 +87,23 @@ function hideCards(){
         })
     }
 }
+
+function addFavIcon(){
+    var user = firebase.auth().currentUser;
+    if(user){
+        var hide = database.ref('Users/' + user.uid + "/favorites");
+        hide.once("value").then(function(snapshot){
+            snapshot.forEach(function(fav){
+                // console.log(hidden.val());
+                var cop =  document.getElementById(fav.val());
+                var cp = $(cop).find('.fav');
+                cp.text("★");
+            })
+        })
+    }
+}
+
+
 
 
 var suggest_li = document.getElementById("suggest_li");
