@@ -21,6 +21,8 @@ googleLoginBtn.addEventListener('click', e => {
 
 firebase.auth().onAuthStateChanged(function(user){
     if(user){
+        counter++;
+        if(counter == 1){
         googleLogOut.style.removeProperty('display');
         googleLoginBtn2.style.display = "none";
 
@@ -29,10 +31,8 @@ firebase.auth().onAuthStateChanged(function(user){
         console.log(user.uid);
         
         writeUserData(user.uid, user.displayName, user.email, user.photoURL);
-        counter++;
         console.log("counter = " + counter);
-        if(counter == 1){
-           LoadUser();
+        LoadUser();
         }
     }else{
         googleLogOut.style.display = "none";
@@ -42,12 +42,10 @@ firebase.auth().onAuthStateChanged(function(user){
 })
 
 function writeUserData(userId, name, email, imageUrl) {
-  firebase.database().ref('Users/' + userId).set({
+  firebase.database().ref('Users/' + userId).update({
     username: name,
     email: email,
     profile_picture : imageUrl,
-    favorites: [1, 2, 3, 6],
-    hidden: [3, 4, 5]
   });
   console.log("User added to the database.");
 }

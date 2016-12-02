@@ -7,6 +7,25 @@
 var database = firebase.database();
 var Company_Data = database.ref('Company_Data');
 
+
+function addtoFav(item){
+    var user = firebase.auth().currentUser;
+    var par = $(item).parent().attr("id");
+    var favorites = database.ref('Users/' + user.uid + "/favorites");
+
+    favorites.once("value").then(function(snapshot){
+        var b = snapshot.child(parseInt(par)).exists(); // true
+        if(!b){
+            var updates = {};
+            updates[parseInt(par)] = parseInt(par);
+            favorites.update(updates);
+        }else{
+            favorites.child(parseInt(par)).remove();
+        }
+    })
+    
+}
+
 Company_Data.once('value').then(function (snapshot) {
     var index = 1;
     snapshot.forEach(function (company) {
@@ -20,6 +39,7 @@ Company_Data.once('value').then(function (snapshot) {
         company.child('Tag').forEach(function (tagIndex) {
             cn.append('<li class=\"tag ' + tagIndex.val() + '\">' + tagIndex.val() + "<\/li>");
         })
+        // action.append('<li class="fav" id="favid"></li>');
     })
 })
 
@@ -47,4 +67,5 @@ firebase.auth().onAuthStateChanged(function(user){
 
     }
 })
+
 

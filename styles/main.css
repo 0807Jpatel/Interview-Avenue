@@ -370,3 +370,12 @@
             padding-top: 25%;
         }
     }
+
+
+    .fav{
+            float: right;
+            margin-right: 20px;
+            margin-top: 20px;
+            z-index:9999;
+           position: relative;
+  }
