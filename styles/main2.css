@@ -53,8 +53,9 @@ body{
 }
 
 .submitButton{
-    bottom: 10%;
-    right: 10%;
+    /*bottom: %;*/
+    left: 44%;
+    margin-bottom: 20px;
 }
 
 .unhideButton{

@@ -6,7 +6,9 @@
 
 var database = firebase.database();
 var Company_Data = database.ref('Company_Data');
+var currentSort = "name";
 
+init(Company_Data);
 
 function addtoFav(item) {
     var user = firebase.auth().currentUser;
@@ -22,13 +24,16 @@ function addtoFav(item) {
                 updates[parseInt(par)] = parseInt(par);
                 favorites.update(updates);
                 item.innerText = "★";
+                Materialize.toast('Favorited', 800);
+
             } else {
                 favorites.child(parseInt(par)).remove();
                 item.innerText = "☆";
+                Materialize.toast('Unfavorited', 800);
             }
         })
     } else {
-        alert("Must be logged in to add to Favorite")
+        Materialize.toast('Must be logged in to add to Favorite', 2000);
     }
 }
 
@@ -51,9 +56,9 @@ function hideCardU(item) {
         })
 
         document.getElementById(par).remove();
-
+        Materialize.toast('Card hidden', 800);
     } else {
-        alert("Must be logged in to hide");
+        Materialize.toast('Must be logged in to hide', 2000);
     }
 }
 
@@ -71,29 +76,32 @@ function markRemoval(item)  {
                 removal.update(remove);
             }
         })
+        Materialize.toast('Marked for removal', 800);
     } else {
-        alert("Must be logged in to add to Favorite")
+        Materialize.toast('Must be logged in mark for removal', 2000);
     }
 }
-
-Company_Data.once('value').then(function (snapshot) {
-    var index = 1;
-    snapshot.forEach(function (company) {
-        var clone = $('#cardtemplate').clone().prop({ id: index++ }).appendTo("#content");
-        clone.removeAttr('style');
-        var cl = clone.find('.companyLogo');
-        cl.attr('src', company.child('CompanyLogo').val());
-        var cn = clone.find('.companyName');
-        cn.html(company.child('name').val());
-        var cn = clone.find('.tags');
-        company.child('Tag').forEach(function (tagIndex) {
-            cn.append('<li class=\"tag ' + tagIndex.val() + '\">' + tagIndex.val() + "<\/li>");
+function init(Company_Data){
+    Company_Data.once('value').then(function (snapshot) {
+        var index = 1;
+        $("#content").empty();
+        snapshot.forEach(function (company) {
+            var clone = $('#cardtemplate').clone().prop({ id: index++ }).appendTo("#content");
+            clone.removeAttr('style');
+            var cl = clone.find('.companyLogo');
+            cl.attr('src', company.child('CompanyLogo').val());
+            var cn = clone.find('.companyName');
+            cn.html(company.child('name').val());
+            var cn = clone.find('.tags');
+            company.child('Tag').forEach(function (tagIndex) {
+                cn.append('<li class=\"tag ' + tagIndex.val() + '\">' + tagIndex.val() + "<\/li>");
+            })
+            // action.append('<li class="fav" id="favid"></li>');
         })
-        // action.append('<li class="fav" id="favid"></li>');
+        hideCards();
+        addFavIcon();
     })
-    hideCards();
-    addFavIcon();
-})
+}
 
 function hideCards(){
     var user = firebase.auth().currentUser;
@@ -164,4 +172,76 @@ firebase.auth().onAuthStateChanged(function (user) {
 })
 
 
+function sortByAlpha(){
+    $("#content").empty();
+    if(currentSort == "name"){
+        var Company_Data = database.ref('Company_Data').orderByChild('name');
+        initR(Company_Data);
+        currentSort = "Rname";
+    }else{
+        var Company_Data = database.ref('Company_Data').orderByChild('name');
+        init(Company_Data);
+        currentSort = "name";
+    }
+}
 
+function sortByDate(){
+    $("#content").empty();
+    if(currentSort == "date"){
+        var Company_Data = database.ref('Company_Data').orderByChild('Date');
+        initR(Company_Data);
+        currentSort = "Rdate";
+    }else{
+        var Company_Data = database.ref('Company_Data').orderByChild('Date');
+        init(Company_Data);
+        currentSort = "date";   
+    }
+}
+
+function sortByClick(){
+    $("#content").empty();
+    if(currentSort == "click"){
+        var Company_Data = database.ref('Company_Data').orderByChild('clicks');
+        initR(Company_Data);
+        currentSort = "Rclick";
+    }else{
+        var Company_Data = database.ref('Company_Data').orderByChild('clicks');
+        init(Company_Data);
+        currentSort = "click";
+    }
+}
+
+
+function initR(Company_Data){
+    Company_Data.once('value').then(function (snapshot) {
+        var index = 1;
+        snapshot.forEach(function (company) {
+            var clone = $('#cardtemplate').clone().prop({ id: index++ }).prependTo("#content");
+            clone.removeAttr('style');
+            var cl = clone.find('.companyLogo');
+            cl.attr('src', company.child('CompanyLogo').val());
+            var cn = clone.find('.companyName');
+            cn.html(company.child('name').val());
+            var cn = clone.find('.tags');
+            company.child('Tag').forEach(function (tagIndex) {
+                cn.append('<li class=\"tag ' + tagIndex.val() + '\">' + tagIndex.val() + "<\/li>");
+            })
+            // action.append('<li class="fav" id="favid"></li>');
+        })
+        hideCards();
+        addFavIcon();
+    })
+}
+
+
+function applyAction(item){
+    var par = $(item).parents('[id]:eq(0)').attr("id");
+    var Company_Data = database.ref('Company_Data/' + parseInt(par) + "/clicks");
+    Company_Data.once('value').then(function(snapshot){
+        var clicks = snapshot.val() + 1;
+        Company_Data = database.ref('Company_Data/' + parseInt(par));
+        Company_Data.update({
+            clicks : clicks
+        })
+    });
+}
