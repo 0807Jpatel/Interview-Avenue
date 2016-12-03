@@ -7,7 +7,7 @@
       </div>
       <div class="card-stacked">
         <div class="card-content companyInfo">
-          <a class="fav favButton tooltipped" id="favid" href="javascript:void(0)" onclick="return addtoFav(this);" data-position="top" data-delay="50" data-tooltip="Sort By Alphabet">☆</a>
+          <a class="fav favButton" id="favid" href="javascript:void(0)" onclick="return addtoFav(this);">☆</a>
           <a class="removalButton" id="removeid" href="javascript:void(0)" onclick="return markRemoval(this);"><i class="material-icons">error_outline</i></a>
           <a class="hideButton" id="hideid" href="javascript:void(0)" onclick="return hideCardU(this);"><i class="material-icons">visibility_off</i></a>
           <h5 class="companyName"></h5>
@@ -36,6 +36,10 @@
     </ul>
     </div>
 
-
+    <script>
+    $(document).ready(function(){
+    $('.tooltipped').tooltip({delay: 50});
+    });
+    </script>
     <script type="text/javascript" src="../scripts/main.js"></script>
 </body>
