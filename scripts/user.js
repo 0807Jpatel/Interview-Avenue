@@ -52,3 +52,6 @@ var user = firebase.auth().currentUser;
     }else{
         console.log("YOU SHALL NOT PASS!!!!");
     }
+
+
+        

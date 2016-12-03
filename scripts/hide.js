@@ -38,6 +38,8 @@ function showHidden(item){
         })
 
         document.getElementById(par).remove();
+        Materialize.toast('Unhidden', 800);
+
 
     } else {
         alert("Must be logged in to hide");
