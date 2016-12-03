@@ -22,25 +22,6 @@
 </head>
 
 <body>
-    <!--<div class="header">
-
-        <div class="headerleft">
-            <img src="images/icons/icon-144x144.png" height="75px" width="75px">
-        </div>
-
-        <div class="icon" id="iconid">
-            <a href="javascript:void(0);" style="font-size:1.5em;" onclick="openNav()">☰</a>
-        </div>
-
-        <div class="headerright" id="mySidenav">
-            <ul class="headernavlist" id="navHeaderList">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
-                
-            </ul>
-        </div>
-
-    </div>-->
     <div class="navbar-fixed">
     <nav class="blue lighten-1">
         <div class="nav-wrapper">
@@ -80,10 +61,13 @@
         $("#a").load("views/login.html");
     }
     function LoadUser(){
-        $("#a").load("views/user.html")
+        $("#a").load("views/user.html");
     }
     function LoadForm(){
-        $("#a").load("views/form.html")
+        $("#a").load("views/form.html");
+    }
+    function LoadHidden(){
+        $("#a").load("views/hide.html");
     }
         $(".button-collapse").sideNav();
     </script>

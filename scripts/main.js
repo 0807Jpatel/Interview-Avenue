@@ -11,7 +11,8 @@ var Company_Data = database.ref('Company_Data');
 function addtoFav(item) {
     var user = firebase.auth().currentUser;
     if (user) {
-        var par = $(item).parent().attr("id");
+        // var par = $(item).parent().attr("id");
+        var par = $(item).parents('[id]:eq(0)').attr("id");
         var favorites = database.ref('Users/' + user.uid + "/favorites");
         favorites.once("value").then(function (snapshot) {
             console.log(snapshot.child(parseInt(par)).val());
@@ -35,7 +36,7 @@ function addtoFav(item) {
 function hideCardU(item) {  
     var user = firebase.auth().currentUser;
     if (user) {
-        var par = $(item).parent().attr("id");
+        var par = $(item).parents('[id]:eq(0)').attr("id");
         var hide = database.ref('Users/' + user.uid + "/hidden");
 
         hide.once("value").then(function (snapshot) {
@@ -53,6 +54,25 @@ function hideCardU(item) {
 
     } else {
         alert("Must be logged in to hide");
+    }
+}
+
+function markRemoval(item)  {
+        var user = firebase.auth().currentUser;
+    if (user) {
+        var par = $(item).parents('[id]:eq(0)').attr("id");
+        var removal = database.ref('Removal');
+        removal.once("value").then(function (snapshot) {
+            console.log(snapshot.child(parseInt(par)).val());
+            var b = snapshot.child(parseInt(par)).exists(); // true
+            if (!b) {
+                var remove = {};
+                remove[parseInt(par)] = parseInt(par);
+                removal.update(remove);
+            }
+        })
+    } else {
+        alert("Must be logged in to add to Favorite")
     }
 }
 
