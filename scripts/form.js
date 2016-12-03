@@ -7,7 +7,6 @@ function addSuggest(){
     var Deadline = document.getElementById("deadline");
     var Locations = document.getElementById("location");
     var Description = document.getElementById("description");
-    var dateReg = /^\d{2}\/\d{2}\/\d{2}$/ ;
     var urlReg = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
     var emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if(Name.value == "" || Email.value == "" || CompanyName.value == "" || urllink.value == ""){
@@ -16,10 +15,7 @@ function addSuggest(){
         alert("Invalid Email");
     }else if(!urlReg.test(urllink.value)){
         alert("Invalid URL");
-    }else if (!dateReg.test(Deadline.value) && Deadline.value != ""){
-        alert("Invalid Date Format");
-    }
-    else{
+    }else{
         var user = firebase.auth().currentUser;
         var database = firebase.database();
         var suggestions = database.ref('Suggestions/');
