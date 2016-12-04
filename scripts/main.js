@@ -1,8 +1,12 @@
-// if ('serviceWorker' in navigator) {
-//    navigator.serviceWorker
-//             .register('./service-worker.js')
-//             .then(function() { console.log('Service Worker Registered'); });
-// }
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/serviceWorker.js').then(function(registration) {
+    // Registration was successful
+    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+  }).catch(function(err) {
+    // registration failed :(
+    console.log('ServiceWorker registration failed: ', err);
+  });
+}
 
 var database = firebase.database();
 var Company_Data = database.ref('Company_Data');
@@ -23,15 +27,18 @@ function addtoFav(item) {
                 var updates = {};
                 updates[parseInt(par)] = parseInt(par);
                 favorites.update(updates);
-                item.innerText = "★";
-                Materialize.toast('Favorited', 800);
 
             } else {
                 favorites.child(parseInt(par)).remove();
-                item.innerText = "☆";
-                Materialize.toast('Unfavorited', 800);
             }
         })
+        if(item.innerText=="☆"){
+            item.innerText = "★";
+            Materialize.toast('Favorited', 800);
+        }else{
+            item.innerText = "☆";
+            Materialize.toast('Unfavorited', 800);
+        }
     } else {
         Materialize.toast('Must be logged in to add to Favorite', 2000);
     }
@@ -86,7 +93,7 @@ function init(Company_Data){
         var index = 1;
         $("#content").empty();
         snapshot.forEach(function (company) {
-            var clone = $('#cardtemplate').clone().prop({ id: index++ }).appendTo("#content");
+            var clone = $('#cardtemplate').clone().prop({ id: company.key }).appendTo("#content");
             clone.removeAttr('style');
             var cl = clone.find('.companyLogo');
             cl.attr('src', company.child('CompanyLogo').val());
@@ -202,11 +209,11 @@ function sortByClick(){
     $("#content").empty();
     if(currentSort == "click"){
         var Company_Data = database.ref('Company_Data').orderByChild('clicks');
-        initR(Company_Data);
+        init(Company_Data);
         currentSort = "Rclick";
     }else{
         var Company_Data = database.ref('Company_Data').orderByChild('clicks');
-        init(Company_Data);
+        initR(Company_Data);
         currentSort = "click";
     }
 }
@@ -216,7 +223,7 @@ function initR(Company_Data){
     Company_Data.once('value').then(function (snapshot) {
         var index = 1;
         snapshot.forEach(function (company) {
-            var clone = $('#cardtemplate').clone().prop({ id: index++ }).prependTo("#content");
+            var clone = $('#cardtemplate').clone().prop({ id: company.key }).prependTo("#content");
             clone.removeAttr('style');
             var cl = clone.find('.companyLogo');
             cl.attr('src', company.child('CompanyLogo').val());
