@@ -1,6 +1,16 @@
 <body>
 
 
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s6"><a class="active">Search By Name</a></li>
+        <li class="tab col s6"><a>Search By Tag</a></li>
+      </ul>
+    </div>
+  </div>
+
+
     <nav>
     <div class="nav-wrapper">
       <form>
@@ -28,8 +38,8 @@
           <h5 class="companyName"></h5>
           <p>I am a very simple card. I am good at containing small bits of information.</p>
         </div>
-        <div>
-        <a class="waves-effect waves-light btn applyButton" href="javascript:void(0)" onclick="return applyAction(this);">Apply</a>
+        <div onclick="return applyAction(this);">
+        <a class="waves-effect waves-light btn applyButton" href="" target="_blank" >Apply</a>
         </div>
 
         <div class="card-action tagsdiv">
@@ -50,6 +60,8 @@
 
     </ul>
     </div>
+
+    <a href="#top" id="backToTop">Back To Top</a> 
 
     <script>
     $(document).ready(function(){

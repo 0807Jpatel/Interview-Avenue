@@ -1,5 +1,6 @@
 var database;
 var Company_Data;
+var currSearchMode;
 var currentSort = "name";
 
 if (navigator.onLine) {
@@ -93,6 +94,8 @@ function init(Company_Data) {
             clone.removeAttr('style');
             var cl = clone.find('.companyLogo');
             cl.attr('src', company.child('CompanyLogo').val());
+            var link = clone.find('.applyButton');
+            link.attr('href', company.child('URL').val());
             var cn = clone.find('.companyName');
             cn.html(company.child('name').val());
             var cn = clone.find('.tags');
@@ -248,6 +251,7 @@ function applyAction(item) {
             clicks: clicks
         })
     });
+
 }
 
 
@@ -280,37 +284,66 @@ function offLineCards() {
 }
 
 function filter() {
+
+    var tab = $('.tab').find('.active');
+    // console.log(tab.text());
     var search = document.getElementById('search');
-    console.log(search.value);
     search = search.value.toLowerCase();
 
-    $(".card-stacked").each(function (index, value) {
-        
-        var companyName = $(value).find(".companyName");
-        companyName = companyName.text().toLowerCase();
-        console.log(index);
-        console.log(companyName);
-        console.log(search);
-        var tags = $(value).find(".tags");
+    if (tab.text() == "Search By Name") {
 
-        if (companyName.search(search) > -1 && companyName!="") {
+        $(".card-stacked").each(function (index, value) {
 
-            var par = $(value).parents('[id]:eq(0)');
-            $(par).show();
-        }
-        else {
-            var par = $(value).parents('[id]:eq(0)');
-            $(par).hide();
-        }
+            var companyName = $(value).find(".companyName");
+            companyName = companyName.text().toLowerCase();
 
-    })
+            if (companyName.search(search) > -1 && companyName != "") {
+
+                var par = $(value).parents('[id]:eq(0)');
+                $(par).show();
+            }
+            else {
+                var par = $(value).parents('[id]:eq(0)');
+                $(par).hide();
+            }
+        })
+
+
+    } else {
+
+        $(".card-stacked").each(function (index, value) {
+
+            var tags = $(value).find(".tags li");
+
+            $.each(tags, function (index, value) {
+
+                var lang = value.innerText.toLowerCase();
+                // console.log(lang);
+
+                if (lang.search(search) > -1) {
+                    var par = $(value).parents('[id]:eq(0)');
+                    $(par).show();
+                    return false;
+                }
+                else {
+                    var par = $(value).parents('[id]:eq(0)');
+                    $(par).hide();
+                }
+            })
+        })
+
+    }
 }
 
-function clearSearch()  {
+function clearSearch() {
     var search = document.getElementById('search');
     search.value = "";
     filter();
 }
+
+
+
+
 
 // if ('serviceWorker' in navigator) {
 //     navigator.serviceWorker.register('/serviceWorker.js').then(function (registration) {
