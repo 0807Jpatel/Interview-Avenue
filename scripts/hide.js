@@ -14,10 +14,13 @@ if(user){
                     
                     var cl = clone.find('.companyLogo');
                     cl.attr('src', currentCompany.child('CompanyLogo').val());
-            var desc = clone.find('.companyDescription');
-            desc.text(company.child('Description').val());
+
+                    var desc = clone.find('.companyDescription');
+                    desc.text(currentCompany.child('Description').val());
+
                     var cn = clone.find('.companyName');
                     cn.html(currentCompany.child('name').val());
+                    
                     var cn = clone.find('.tags');
                     currentCompany.child('Tag').forEach(function (tagIndex) {
                         cn.append('<li class=\"tag ' + tagIndex.val() + '\">' + tagIndex.val() + "<\/li>");

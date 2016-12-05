@@ -21,10 +21,10 @@ var user = firebase.auth().currentUser;
 
                     
                     var link = clone.find('.applyButton');
-                    link.attr('href', company.child('URL').val());
+                    link.attr('href', currentCompany.child('URL').val());
 
                     var desc = clone.find('.companyDescription');
-                    desc.text(company.child('Description').val());
+                    desc.text(currentCompany.child('Description').val());
 
                     var cn = clone.find('.companyName');
                     cn.html(currentCompany.child('name').val());
