@@ -160,4 +160,9 @@ body{
         margin-top: -7.3%;
         margin-right: -6%;
     }
+
+    .updateButton{
+        margin-top: -4%;
+        margin-right: 15%;
+    }
 }

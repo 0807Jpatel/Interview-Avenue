@@ -27,3 +27,4 @@ function LogOut(){
     counter = 0;
     LoadContent();
 }
+
