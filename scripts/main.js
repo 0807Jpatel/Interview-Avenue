@@ -66,6 +66,10 @@ function hideCardU(item) {
     }
 }
 
+function updateCard(item)   {
+    LoadUpdate();
+}
+
 function markRemoval(item) {
     var user = firebase.auth().currentUser;
     if (user) {
@@ -92,12 +96,19 @@ function init(Company_Data) {
         snapshot.forEach(function (company) {
             var clone = $('#cardtemplate').clone().prop({ id: company.key }).appendTo("#content");
             clone.removeAttr('style');
+
             var cl = clone.find('.companyLogo');
             cl.attr('src', company.child('CompanyLogo').val());
+
             var link = clone.find('.applyButton');
             link.attr('href', company.child('URL').val());
+
+            var desc = clone.find('.companyDescription');
+            desc.text(company.child('Description').val());
+
             var cn = clone.find('.companyName');
             cn.html(company.child('name').val());
+
             var cn = clone.find('.tags');
             company.child('Tag').forEach(function (tagIndex) {
                 cn.append('<li class=\"tag ' + tagIndex.val() + '\">' + tagIndex.val() + "<\/li>");
@@ -227,6 +238,10 @@ function initR(Company_Data) {
             clone.removeAttr('style');
             var cl = clone.find('.companyLogo');
             cl.attr('src', company.child('CompanyLogo').val());
+            var link = clone.find('.applyButton');
+            link.attr('href', company.child('URL').val());
+            var desc = clone.find('.companyDescription');
+            desc.text(company.child('Description').val());
             var cn = clone.find('.companyName');
             cn.html(company.child('name').val());
             var cn = clone.find('.tags');
@@ -242,6 +257,7 @@ function initR(Company_Data) {
 
 
 function applyAction(item) {
+    console.log("lol");
     var par = $(item).parents('[id]:eq(0)').attr("id");
     var Company_Data = database.ref('Company_Data/' + parseInt(par) + "/clicks");
     Company_Data.once('value').then(function (snapshot) {

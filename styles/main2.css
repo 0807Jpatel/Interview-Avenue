@@ -52,6 +52,18 @@ body{
     font-weight: bold;
 }
 
+.updateButton{
+    float: right;
+    height: 10px;
+    margin-right: 7px;
+    margin-top: 8px;
+    position: relative;
+    font-size: 22px;
+    text-decoration: none;
+    color: #111;
+    font-weight: bold;
+}
+
 .submitButton{
     /*bottom: %;*/
     left: 44%;
@@ -133,5 +145,19 @@ body{
     }
     .tags{
         margin-left: -150px;
+    }
+    .removalButton  {
+        margin-top: -4%;
+        margin-right: 15%;
+    }
+
+    .hideButton {
+        margin-top: -4%;
+        margin-right: 15%;
+    }
+
+    .favButton {
+        margin-top: -7.3%;
+        margin-right: -6%;
     }
 }

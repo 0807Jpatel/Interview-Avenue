@@ -10,11 +10,13 @@
           <a class="fav favButton" id="favid" href="javascript:void(0)" onclick="return addtoFav(this);" title="Favorite">☆</a>
           <a class="removalButton" id="removeid" href="javascript:void(0)" onclick="return markRemoval(this);" title="Mark For Removal"><i class="material-icons">error_outline</i></a>
           <h5 class="companyName"></h5>
-          <p>I am a very simple card. I am good at containing small bits of information.</p>
+          <p class="companyDescription"></p>
         </div>
-        <div>
-        <a class="waves-effect waves-light btn applyButton">Apply</a>
+        
+        <div onclick="return applyAction(this);">
+        <a class="waves-effect waves-light btn applyButton" href="" target="_blank" >Apply</a>
         </div>
+
         <div class="card-action tagsdiv">
             <ul class='tags'>
             </ul>
