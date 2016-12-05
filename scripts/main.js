@@ -67,7 +67,13 @@ function hideCardU(item) {
 }
 
 function updateCard(item)   {
-    LoadUpdate();
+    var user = firebase.auth().currentUser;
+    if (user)   {
+        LoadUpdate();
+    }
+    else    {
+        Materialize.toast('Must be logged in to update', 2000);
+    }
 }
 
 function markRemoval(item) {
