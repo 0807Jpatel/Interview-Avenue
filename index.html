@@ -29,7 +29,7 @@
             <a href="#" data-activates="mobile-demo" class="button-collapse"><span class="material-icons">☰</span></a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="javascript:void(0)" onclick="LoadContent()">Internship</a></li>
-                <li><a href="#resouces">Resources</a></li>
+                <li><a href="javascript:void(0)" onclick="LoadResources()">Resources</a></li>
                 <li id="suggest_li" style="display: none;"><a href="javascript:void(0)" onclick="LoadUser()" id="UserName"></a></li>
                 <li id="login_li" style="display: none;"><a href="javascript:void(0)" onclick="LoadLogin()">Login</a></li>
                 <li id="logout_li" style="display: none;"><a href="javascript:void(0)" onclick="LogOut()">Logout</a></li>
@@ -37,7 +37,7 @@
             </ul>
             <ul class="side-nav" id="mobile-demo">
                 <li><a href="javascript:void(0)" onclick="LoadContent()">Internship</a></li>
-                <li><a href="#resouces">Resources</a></li>
+                <li><a href="javascript:void(0)" onclick="LoadResources()">Resources</a></li>
                 <li id="suggest_li2" style="display: none;"><a href="javascript:void(0)" onclick="LoadUser()" id="UserName2"></a></li>
                 <li id="login_li2" style="display: none;"><a href="javascript:void(0)" onclick="LoadLogin()">Login</a></li>
                 <li id="logout_li2" style="display: none;"><a href="javascript:void(0)" onclick="LogOut()">Logout</a></li>
@@ -73,6 +73,9 @@
     }
     function LoadUpdate(){
         $("#a").load("views/update.html");
+    }
+    function LoadResources()    {
+        $("#a").load("views/resources.html");
     }
         $(".button-collapse").sideNav();
     </script>
