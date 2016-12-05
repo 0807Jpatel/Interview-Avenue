@@ -69,6 +69,15 @@
     $('.tooltipped').tooltip({delay: 50});
     $('ul.tabs').tabs();
     });
+
+
+    $('#search').on('keyup keypress', function(e) {
+  var keyCode = e.keyCode || e.which;
+  if (keyCode === 13) { 
+    e.preventDefault();
+    return false;
+  }
+});
     </script>
     <script type="text/javascript" src="../scripts/main.js"></script>
 </body>
