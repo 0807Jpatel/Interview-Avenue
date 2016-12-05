@@ -26,7 +26,7 @@
     <nav class="blue lighten-1">
         <div class="nav-wrapper">
             <a href="#!" class="brand-logo">Logo</a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><span class="material-icons">☰</span></a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><span class="material-icons"><i class="material-icons">menu</i></span></a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="javascript:void(0)" onclick="LoadContent()">Internship</a></li>
                 <li><a href="javascript:void(0)" onclick="LoadResources()">Resources</a></li>
@@ -77,7 +77,11 @@
     function LoadResources()    {
         $("#a").load("views/resources.html");
     }
-        $(".button-collapse").sideNav();
+    $('.button-collapse').sideNav({
+      closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+      draggable: true // Choose whether you can drag to open on touch screens
+    }
+  );
     </script>
 
 </body>
