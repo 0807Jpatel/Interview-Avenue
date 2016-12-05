@@ -69,6 +69,7 @@ function hideCardU(item) {
 function updateCard(item)   {
     var user = firebase.auth().currentUser;
     if (user)   {
+        UPDATECARD = $(item).parents('[id]:eq(0)');
         LoadUpdate();
     }
     else    {

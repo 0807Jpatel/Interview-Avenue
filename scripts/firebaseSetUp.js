@@ -1,5 +1,6 @@
 //Initialize Firebase
 var counter = 0;
+var UPDATECARD;
 
 var config = {
     apiKey: "AIzaSyDMINrJm6ARcDPFuBOI3eHNeDPDmZkDNU0",
