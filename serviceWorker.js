@@ -15,6 +15,7 @@ var urlsToCache = [
   '/views/content.html',
   '/views/hide.html',
   '/views/user.html',
+  '/views/resources.html'
 ];
 
 self.addEventListener('install', function(event) {
