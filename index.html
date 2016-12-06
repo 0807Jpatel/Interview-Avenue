@@ -23,7 +23,7 @@
 
 <body>
     <div class="navbar-fixed">
-    <nav class="blue lighten-1">
+    <nav class="blue lighten-1" id="navbarid">
         <div class="nav-wrapper">
             <a href="#!" class="brand-logo">Logo</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><span class="material-icons"><i class="material-icons">menu</i></span></a>
@@ -82,6 +82,24 @@
       draggable: true // Choose whether you can drag to open on touch screens
     }
   );
+
+    if(!navigator.onLine){
+        Materialize.toast("Offline! No data will be stored", 5000);
+    }
+
+    var connectedRef = firebase.database().ref(".info/connected");
+    connectedRef.on("value", function(snap) {
+    if (snap.val() === true){   
+       console.log(firebase);    
+       $("#navbarid").addClass("blue");
+       $("#navbarid").removeClass("grey");
+    } else {
+       $("#navbarid").addClass("grey");
+       $("#navbarid").removeClass("blue");
+    }
+    });
+
+
     </script>
 
 </body>

@@ -1,6 +1,5 @@
 var database;
 var Company_Data;
-var currSearchMode;
 var currentSort = "name";
 
 if (navigator.onLine) {
@@ -12,6 +11,8 @@ if (navigator.onLine) {
 }
 
 function addtoFav(item) {
+    var database = firebase.database();
+    var Company_Data = database.ref('Company_Data');
     var user = firebase.auth().currentUser;
     if (user) {
         // var par = $(item).parent().attr("id");
@@ -43,6 +44,8 @@ function addtoFav(item) {
 
 
 function hideCardU(item) {
+    var database = firebase.database();
+    var Company_Data = database.ref('Company_Data');
     var user = firebase.auth().currentUser;
     if (user) {
         var par = $(item).parents('[id]:eq(0)').attr("id");

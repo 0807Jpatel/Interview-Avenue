@@ -36,7 +36,7 @@ googleLoginBtn.addEventListener('click', e => {
     //         var email = error.email;
     //         console.log(email + '\n');
     //         var credential = error.credential;
-    //     });
+    // });
 
 })
 
