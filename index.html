@@ -66,7 +66,11 @@
         $("#a").load("views/user.html");
     }
     function LoadForm(){
-        $("#a").load("views/form.html");
+        if(navigator.onLine){
+            $("#a").load("views/form.html");
+        }else{
+            Materialize.toast("Need Connection to Suggest", 4000);
+        }
     }
     function LoadHidden(){       
         $("#a").load("views/hide.html");
