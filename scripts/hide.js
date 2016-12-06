@@ -1,4 +1,13 @@
-var user = firebase.auth().currentUser;
+var user;
+if (navigator.onLine) {
+    user = firebase.auth().currentUser;
+    HideInit();
+} else {
+    offLineHideCards();
+}
+
+
+function HideInit(){
 if(user){
         var user_data = database.ref('Users/'+user.uid);
         var favArray = user_data.child('hidden');
@@ -31,6 +40,7 @@ if(user){
     }else{
         console.log("YOU SHALL NOT PASS!!!!");
 }
+}
 
 function showHidden(item){
     var user = firebase.auth().currentUser;
@@ -49,4 +59,33 @@ function showHidden(item){
     } else {
         alert("Must be logged in to hide");
     }
+}
+
+function offLineHideCards(){
+    var company = localStorage.getItem('company_data');
+    var company = JSON.parse(company);
+
+    var userO = localStorage.getItem('user');
+    var favO = JSON.parse(userO).hidden;
+
+    $("#hide_content").empty();
+    $.each(favO, function (index, value) {
+        var clone = $('#cardtemplate').clone().prop({ id: value }).appendTo("#hide_content");
+        clone.removeAttr('style');
+        value = value.toString();
+        companyInfo = company[value];
+        var cl = clone.find('.companyLogo');
+        cl.attr('src', companyInfo.CompanyLogo);
+        var cn = clone.find('.companyName');
+        cn.html(companyInfo.name);
+        var link = clone.find('.applyButton');
+        link.attr('href', companyInfo.URL);
+        var desc = clone.find('.companyDescription');
+        desc.text(companyInfo.Description);
+
+        var cn = clone.find('.tags');
+        $.each(companyInfo.Tag, function (index, value) {
+            cn.append('<li class=\"tag ' + value + '\">' + value + "<\/li>");
+        })
+    })
 }
