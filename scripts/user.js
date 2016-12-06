@@ -3,6 +3,8 @@ var Company_Data = database.ref('Company_Data');
 var suggestions = database.ref('Suggestions');
 var user = firebase.auth().currentUser;
 
+
+
     if(user){
         var user_data = database.ref('Users/'+user.uid);
         var favArray = user_data.child('favorites');
