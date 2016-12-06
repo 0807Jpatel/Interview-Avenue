@@ -299,6 +299,13 @@ function offLineCards() {
         cl.attr('src', value.CompanyLogo);
         var cn = clone.find('.companyName');
         cn.html(value.name);
+
+        var link = clone.find('.applyButton');
+        link.attr('href', value.URL);
+
+        var desc = clone.find('.companyDescription');
+        desc.text(value.Description);
+
         var cn = clone.find('.tags');
         $.each(value.Tag, function (index, value) {
             cn.append('<li class=\"tag ' + value + '\">' + value + "<\/li>");
