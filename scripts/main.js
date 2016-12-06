@@ -286,6 +286,15 @@ function saveDataLocally() {
         var obj = JSON.stringify(obj);
         localStorage.setItem('company_data', obj);
     })
+
+    if (user)   {
+        var userRef = database.ref('Users/' + user.uid);
+        userRef.once('value').then(function (snapshot)  {
+            var obj = snapshot.exportVal();
+            obj = JSON.stringify(obj);
+            localStorage.setItem('user', obj);
+        })
+    }
 }
 
 function offLineCards() {
@@ -310,6 +319,20 @@ function offLineCards() {
         $.each(value.Tag, function (index, value) {
             cn.append('<li class=\"tag ' + value + '\">' + value + "<\/li>");
         })
+    })
+
+    var obj = localStorage.getItem('user');
+    obj = JSON.parse(obj);
+
+    $.each(obj, function(index, value)  {
+        var cop = document.getElementById(value);
+        var cp = $(cop).find('.fav');
+        cp.text("★");
+    })
+
+    $.each(obj, function(index, value)  {
+        var cop = document.getElementById(value);
+        cop.hide();
     })
 }
 
