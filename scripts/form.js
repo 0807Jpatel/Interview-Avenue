@@ -7,6 +7,7 @@ function addSuggest() {
         var Email = document.getElementById("email");
         var CompanyName = document.getElementById("company_name");
         var urllink = document.getElementById("urllink");
+        var ImageLink = document.getElementById("imageurllink");
         var Deadline = document.getElementById("deadline");
         var Locations = document.getElementById("location");
         var Description = document.getElementById("description");
@@ -35,8 +36,9 @@ function addSuggest() {
                 name: Name.value,
                 email: Email.value,
                 CompanyName: CompanyName.value,
-                urllink: urllink.value,
-                deadline: Deadline.value,
+                CompanyLogo: ImageLink.value,
+                URL: urllink.value,
+                Date: Deadline.value,
                 location: Locations.value,
                 Description: Description.value,
                 Tag: Tag

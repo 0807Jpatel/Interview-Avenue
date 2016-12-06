@@ -55,12 +55,13 @@ function UserInit(){
                     clone.removeAttr('style');
                     var cl = clone.find('.companyLogo');
                     cl.attr('src', currentCompany.child('CompanyLogo').val());
+                    console.log(currentCompany.child('CompanyLogo').val());
                     var link = clone.find('.applyButton');
                     link.attr('href', currentCompany.child('URL').val());
                     var desc = clone.find('.companyDescription');
                     desc.text(currentCompany.child('Description').val());
                     var cn = clone.find('.companyName');
-                    cn.html(currentCompany.child('name').val());
+                    cn.html(currentCompany.child('CompanyName').val());
                     var cn = clone.find('.tags');
                     currentCompany.child('Tag').forEach(function (tagIndex) {
                         cn.append('<li class=\"tag ' + tagIndex.val() + '\">' + tagIndex.val() + "<\/li>");
