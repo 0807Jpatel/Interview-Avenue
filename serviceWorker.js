@@ -12,10 +12,14 @@ var urlsToCache = [
   '/scripts/hide.js',
   '/scripts/materialize.min.js',
   '/scripts/user.js',
+  '/scripts/update.js',
   '/views/content.html',
   '/views/hide.html',
   '/views/user.html',
-  '/views/resources.html'
+  '/views/update.html',
+  '/views/resources.html',
+  '/images/icons/CLRS.jpeg',
+  '/images/icons/CTCI.jpg'
 ];
 
 self.addEventListener('install', function(event) {
