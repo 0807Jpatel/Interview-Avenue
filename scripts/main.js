@@ -287,6 +287,7 @@ function saveDataLocally() {
         localStorage.setItem('company_data', obj);
     })
 
+    var user = firebase.auth().currentUser;
     if (user)   {
         var userRef = database.ref('Users/' + user.uid);
         userRef.once('value').then(function (snapshot)  {
@@ -322,18 +323,24 @@ function offLineCards() {
     })
 
     var obj = localStorage.getItem('user');
-    obj = JSON.parse(obj);
+    // console.log("outside if" + obj);
+    if(obj){
+        obj = JSON.parse(obj);
+        obj1 = obj.favorites;
+        $.each(obj1, function(index, value)  {
+            // console.log(value);
+            var cop = document.getElementById(value);
+            var cp = $(cop).find('.fav');
+            // console.log(cp);
+            cp.text("★");
+        })
+        obj1 = obj.hidden;
+    $.each(obj1, function(index, value)  {
+            var cop = document.getElementById(value);
+            cop.remove();
+        })
+    }
 
-    $.each(obj, function(index, value)  {
-        var cop = document.getElementById(value);
-        var cp = $(cop).find('.fav');
-        cp.text("★");
-    })
-
-    $.each(obj, function(index, value)  {
-        var cop = document.getElementById(value);
-        cop.hide();
-    })
 }
 
 function filter() {

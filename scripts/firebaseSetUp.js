@@ -27,5 +27,6 @@ function LogOut(){
     firebase.auth().signOut();
     counter = 0;
     LoadContent();
+    localStorage.removeItem('user');
 }
 
