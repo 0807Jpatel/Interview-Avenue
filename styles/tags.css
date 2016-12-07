@@ -67,3 +67,148 @@
         background: #fff;
         border-left: 10px solid #FFA500;
     }
+
+    .tag.javaScript {
+        background: #ff80ab;
+        color: black;
+    }
+    
+    .tag.javaScript::before {
+        background: #fff;
+    }
+    
+    .tag.javaScript::after {
+        background: #fff;
+        border-left: 10px solid #ff80ab;
+    }
+
+    .tag.Internship {
+        background: #00bcd4;
+        color: black;
+    }
+    
+    .tag.Internship::before {
+        background: #fff;
+    }
+    
+    .tag.Internship::after {
+        background: #fff;
+        border-left: 10px solid #00bcd4;
+    }
+
+    .tag.Job {
+        background: #66bb6a;
+        color: black;
+    }
+    
+    .tag.Job::before {
+        background: #fff;
+    }
+    
+    .tag.Job::after {
+        background: #fff;
+        border-left: 10px solid #66bb6a;
+    }
+
+    .tag.NoRequirement {
+        background: #ff8a65;
+        color: black;
+    }
+    
+    .tag.NoRequirement::before {
+        background: #fff;
+    }
+    
+    .tag.NoRequirement::after {
+        background: #fff;
+        border-left: 10px solid #ff8a65;
+    }
+
+    .tag.Objective-C {
+        background: #18ffff;
+        color: black;
+    }
+    
+    .tag.Objective-C::before {
+        background: #fff;
+    }
+    
+    .tag.Objective-C::after {
+        background: #fff;
+        border-left: 10px solid #18ffff;
+    }
+
+    .tag.C {
+        background: #ff8a80;
+        color: black;
+    }
+    
+    .tag.C::before {
+        background: #fff;
+    }
+    
+    .tag.C::after {
+        background: #fff;
+        border-left: 10px solid #ff8a80;
+    }
+
+    .tag.MySQL {
+        background: #f48fb1;
+        color: black;
+    }
+    
+    .tag.MySQL::before {
+        background: #fff;
+    }
+    
+    .tag.MySQL::after {
+        background: #fff;
+        border-left: 10px solid #f48fb1;
+    }
+
+    .tag.SQL {
+        background: #f48fb1;
+        color: black;
+    }
+    
+    .tag.SQL::before {
+        background: #fff;
+    }
+    
+    .tag.SQL::after {
+        background: #fff;
+        border-left: 10px solid #f48fb1;
+    }
+
+    .tag.Android {
+        background: #e1bee7;
+        color: black;
+    }
+    
+    .tag.Android::before {
+        background: #fff;
+    }
+    
+    .tag.Android::after {
+        background: #fff;
+        border-left: 10px solid #e1bee7;
+    }
+
+    .tag.Android {
+        background: #a7ffeb;
+        color: black;
+    }
+    
+    .tag.Android::before {
+        background: #fff;
+    }
+    
+    .tag.Android::after {
+        background: #fff;
+        border-left: 10px solid #a7ffeb;
+    }
+
+
+
+
+

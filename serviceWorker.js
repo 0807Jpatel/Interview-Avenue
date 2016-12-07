@@ -1,7 +1,7 @@
 var CACHE_NAME = 'InternCache';
 var urlsToCache = [
-  'serviceWorker.js',  
-  'index.html',
+  '/',
+  '/index.html',
   '/styles/main2.css',
   '/styles/materialize.min.css',
   '/styles/tags.css',
