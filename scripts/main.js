@@ -2,12 +2,16 @@ var database;
 var Company_Data;
 var currentSort = "name";
 
-if (navigator.onLine) {
-    database = firebase.database();
-    Company_Data = database.ref('Company_Data');
-    init(Company_Data);
-} else {
-    offLineCards();
+function content() {
+    if (navigator.onLine) {
+        console.log("something");
+        database = firebase.database();
+        Company_Data = database.ref('Company_Data');
+        init(Company_Data);
+    } else {
+        console.log("something2");
+        offLineCards();
+    }
 }
 
 function addtoFav(item) {
@@ -69,13 +73,13 @@ function hideCardU(item) {
     }
 }
 
-function updateCard(item)   {
+function updateCard(item) {
     var user = firebase.auth().currentUser;
-    if (user)   {
+    if (user) {
         UPDATECARD = $(item).parents('[id]:eq(0)');
         LoadUpdate();
     }
-    else    {
+    else {
         Materialize.toast('Must be logged in to update', 2000);
     }
 }
@@ -291,9 +295,9 @@ function saveDataLocally() {
     })
 
     var user = firebase.auth().currentUser;
-    if (user)   {
+    if (user) {
         var userRef = database.ref('Users/' + user.uid);
-        userRef.once('value').then(function (snapshot)  {
+        userRef.once('value').then(function (snapshot) {
             var obj = snapshot.exportVal();
             obj = JSON.stringify(obj);
             localStorage.setItem('user', obj);
@@ -327,10 +331,10 @@ function offLineCards() {
 
     var obj = localStorage.getItem('user');
     // console.log("outside if" + obj);
-    if(obj){
+    if (obj) {
         obj = JSON.parse(obj);
         obj1 = obj.favorites;
-        $.each(obj1, function(index, value)  {
+        $.each(obj1, function (index, value) {
             // console.log(value);
             var cop = document.getElementById(value);
             var cp = $(cop).find('.fav');
@@ -338,7 +342,7 @@ function offLineCards() {
             cp.text("★");
         })
         obj1 = obj.hidden;
-    $.each(obj1, function(index, value)  {
+        $.each(obj1, function (index, value) {
             var cop = document.getElementById(value);
             cop.remove();
         })

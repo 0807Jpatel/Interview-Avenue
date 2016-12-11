@@ -1,34 +1,37 @@
+
 var database = firebase.database();
 var Company_Data = database.ref('Company_Data');
 var suggestions;
 var user;
 
 
-if (navigator.onLine) {
-    database = firebase.database();
-    Company_Data = database.ref('Company_Data');
-    user = firebase.auth().currentUser;
-    suggestions = database.ref('Suggestions');
-    UserInit();
-} else {
-    offLineUserCards();
+function userContent() {
+    if (navigator.onLine) {
+        database = firebase.database();
+        Company_Data = database.ref('Company_Data');
+        user = firebase.auth().currentUser;
+        suggestions = database.ref('Suggestions');
+        UserInit();
+    } else {
+        offLineUserCards();
+    }
 }
+function UserInit() {
 
-function UserInit(){
-
-    if(user){
-        var user_data = database.ref('Users/'+user.uid);
+    if (user) {
+        var user_data = database.ref('Users/' + user.uid);
         var favArray = user_data.child('favorites');
-        favArray.once('value').then(function(snapshot){
-           snapshot.forEach(function(company_id){
-               // console.log(company_id.val());       
-               //  console.log("in foreach loop");
+        $("#content").empty();
+        favArray.once('value').then(function (snapshot) {
+            snapshot.forEach(function (company_id) {
+                // console.log(company_id.val());       
+                //  console.log("in foreach loop");
                 var company = Company_Data.child(company_id.val());
-                company.once('value').then(function(currentCompany){
+                company.once('value').then(function (currentCompany) {
 
-                    var clone = $('#cardtemplate').clone().prop({ id: company_id.val() }).appendTo("#user_content");
+                    var clone = $('#cardtemplate').clone().prop({ id: company_id.val() }).appendTo("#content");
                     clone.removeAttr('style');
-                    
+
                     var cl = clone.find('.companyLogo');
                     cl.attr('src', currentCompany.child('CompanyLogo').val());
                     var link = clone.find('.applyButton');
@@ -47,11 +50,11 @@ function UserInit(){
             })
         })
         var suggestPD = user_data.child('suggestionsPD');
-        suggestPD.once('value').then(function(snapsnot){
-            snapsnot.forEach(function(suggestion){
+        suggestPD.once('value').then(function (snapsnot) {
+            snapsnot.forEach(function (suggestion) {
                 var company = suggestions.child(suggestion.val());
-                company.once('value').then(function(currentCompany){
-                    var clone = $('#cardtemplate').clone().prop({ id: suggestion.val() }).appendTo("#user_content");
+                company.once('value').then(function (currentCompany) {
+                    var clone = $('#cardtemplate').clone().prop({ id: suggestion.val() }).appendTo("#content");
                     clone.removeAttr('style');
                     var cl = clone.find('.companyLogo');
                     cl.attr('src', currentCompany.child('CompanyLogo').val());
@@ -64,26 +67,26 @@ function UserInit(){
                     var cn = clone.find('.tags');
                     currentCompany.child('Tag').forEach(function (tagIndex) {
                         cn.append('<li class=\"tag ' + tagIndex.val() + '\">' + tagIndex.val() + "<\/li>");
+                    })
                 })
             })
         })
-        })
 
-    }else{
+    } else {
         console.log("YOU SHALL NOT PASS!!!!");
     }
 }
 
-function offLineUserCards(){
+function offLineUserCards() {
     var company = localStorage.getItem('company_data');
     var company = JSON.parse(company);
 
     var userO = localStorage.getItem('user');
     var favO = JSON.parse(userO).favorites;
 
-    $("#user_content").empty();
+    $("#content").empty();
     $.each(favO, function (index, value) {
-        var clone = $('#cardtemplate').clone().prop({ id: value }).appendTo("#user_content");
+        var clone = $('#cardtemplate').clone().prop({ id: value }).appendTo("#content");
         clone.removeAttr('style');
         value = value.toString();
         companyInfo = company[value];
