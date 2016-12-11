@@ -8,8 +8,8 @@ function content() {
     $("#selector").append("  <div class=\"row\" style=\"margin-bottom: 5px;\"><div class=\"col s12\"><ul class=\"tabs\"><li class=\"tab col s6\"><a class=\"active\" id=\"searchByNameId\">Search By Name</a></li><li class=\"tab col s6\"><a>Search By Tag</a></li></ul></div></div>");
     $("#selector").append("    <nav><div class=\"nav-wrapper\"><form><div class=\"input-field\"><input id=\"search\" type=\"search\" required onkeyup=\"filter()\" autocomplete=\"off\"><label for=\"search\"><i class=\"material-icons\">search</i></label><i class=\"material-icons\" onclick=\"clearSearch()\">close</i></div></form></div></nav>");
     $('ul.tabs').tabs();
+    $("#floatingButton").empty();
     if (navigator.onLine) {
-        $("#floatingButton").empty();
         $("#floatingButton").append("<div class=\"fixed-action-btn horizontal\" style=\"right: 10%; bottom: 10%\"><a class=\"btn-floating btn-large red lighten-1 tooltipped\" data-position=\"top\" data-delay=\"50\" data-tooltip=\"Sort\"><i class=\"large material-icons\">sort_by_alpha</i> </a><ul><li><a class=\"btn-floating deep-purple lighten-1\" href=\"javascript:void(0)\" onclick=\"return sortByAlpha(this)\" title=\"Sort By Alphabet\"><i class=\"material-icons\">sort_by_alpha</i></a></li><li><a class=\"btn-floating light-green accent-4\" href=\"javascript:void(0)\" onclick=\"return sortByDate(this)\" title=\"Sort By Deadline\"><i class=\"material-icons\">schedule</i></a></li><li><a class=\"btn-floating amber darken-4\" href=\"javascript:void(0)\" onclick=\"return sortByClick(this)\" title=\"Sort By Trending\"><i class=\"material-icons\">trending_up</i></a></li></ul></div>");
         database = firebase.database();
         Company_Data = database.ref('Company_Data');

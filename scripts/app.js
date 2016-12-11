@@ -15,7 +15,9 @@ function loginContent(){
 function addListner(){
 var googleLoginBtn2 = document.getElementById("googleLoginBtn");
 googleLoginBtn.addEventListener('click', e => {
-    firebase.auth().signInWithRedirect(provider);
+    
+    if (navigator.onLine) {
+            firebase.auth().signInWithRedirect(provider);
 
 
     firebase.auth().getRedirectResult().then(function (result) {
@@ -48,7 +50,11 @@ googleLoginBtn.addEventListener('click', e => {
     //         var credential = error.credential;
     // });
 
-})
+    } else {
+       Materialize.toast("Can't login offline", 4000);
+    }
+    })
+
 }
 
 
