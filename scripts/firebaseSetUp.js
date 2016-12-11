@@ -9,7 +9,7 @@ if ('serviceWorker' in navigator) {
 }
 
 //Initialize Firebase
-var counter = 0;
+var loginCounter = 0;
 var UPDATECARD;
 
 var config = {
@@ -35,7 +35,7 @@ function closeNav() {
 
 function LogOut(){
     firebase.auth().signOut();
-    counter = 0;
+    loginCounter = 0;
     LoadContent();
     localStorage.removeItem('user');
 }

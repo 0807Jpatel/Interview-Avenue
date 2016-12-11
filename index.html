@@ -23,71 +23,111 @@
 
 <body>
     <div class="navbar-fixed">
-    <nav class="blue lighten-1" id="navbarid">
-        <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">Logo</a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><span class="material-icons"><i class="material-icons">menu</i></span></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="javascript:void(0)" onclick="LoadContent()">Internship</a></li>
-                <li><a href="javascript:void(0)" onclick="LoadResources()">Resources</a></li>
-                <li id="suggest_li" style="display: none;"><a href="javascript:void(0)" onclick="LoadUser()" id="UserName"></a></li>
-                <li id="login_li" style="display: none;"><a href="javascript:void(0)" onclick="LoadLogin()">Login</a></li>
-                <li id="logout_li" style="display: none;"><a href="javascript:void(0)" onclick="LogOut()">Logout</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-            <ul class="side-nav" id="mobile-demo">
-                <li><a href="javascript:void(0)" onclick="LoadContent()">Internship</a></li>
-                <li><a href="javascript:void(0)" onclick="LoadResources()">Resources</a></li>
-                <li id="suggest_li2" style="display: none;"><a href="javascript:void(0)" onclick="LoadUser()" id="UserName2"></a></li>
-                <li id="login_li2" style="display: none;"><a href="javascript:void(0)" onclick="LoadLogin()">Login</a></li>
-                <li id="logout_li2" style="display: none;"><a href="javascript:void(0)" onclick="LogOut()">Logout</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-        </div>
-    </nav>
+        <nav class="blue lighten-1" id="navbarid">
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo">Logo</a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><span class="material-icons"><i class="material-icons">menu</i></span></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="javascript:void(0)" onclick="LoadContent()">Internship</a></li>
+                    <li><a href="javascript:void(0)" onclick="LoadResources()">Resources</a></li>
+                    <li id="suggest_li" style="display: none;">
+                        <a href="javascript:void(0)" onclick="LoadUser()" id="UserName"></a>
+                    </li>
+                    <li id="login_li" style="display: none;"><a href="javascript:void(0)" onclick="LoadLogin()">Login</a></li>
+                    <li id="logout_li" style="display: none;"><a href="javascript:void(0)" onclick="LogOut()">Logout</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+                    <li><a href="javascript:void(0)" onclick="LoadContent()">Internship</a></li>
+                    <li><a href="javascript:void(0)" onclick="LoadResources()">Resources</a></li>
+                    <li id="suggest_li2" style="display: none;">
+                        <a href="javascript:void(0)" onclick="LoadUser()" id="UserName2"></a>
+                    </li>
+                    <li id="login_li2" style="display: none;"><a href="javascript:void(0)" onclick="LoadLogin()">Login</a></li>
+                    <li id="logout_li2" style="display: none;"><a href="javascript:void(0)" onclick="LogOut()">Logout</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </div>
+        </nav>
     </div>
+
+    <!--<div class="row" style="margin-bottom: 5px;">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s6"><a class="active" id="searchByNameId">Search By Name</a></li>
+        <li class="tab col s6"><a>Search By Tag</a></li>
+      </ul>
+    </div>
+  </div>-->
+
+
+
+    <!--<nav>
+    <div class="nav-wrapper">
+      <form>
+        <div class="input-field">
+          <input id="search" type="search" required onkeyup="filter()" autocomplete="off">
+          <label for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons" onclick="clearSearch()">close</i>
+        </div>
+      </form>
+    </div>
+  </nav>-->
+
+
+
+
+
 
     <div class="body-header" id="a">
-      <div class="card horizontal" id="cardtemplate" style="display:none">
-      <div class="card-image">
-        <img class="companyLogo ImageFixDem" src="images/logos/facebook.png" style="width: 150px; height: 150px;">
-      </div>
-      <div class="card-stacked">
-        <div class="card-content companyInfo">
-          <a class="fav favButton" id="favid" href="javascript:void(0)" onclick="return addtoFav(this);" title="Favorite">☆</a>
-          <a class="removalButton" id="removeid" href="javascript:void(0)" onclick="return markRemoval(this);" title="Mark For Removal"><i class="material-icons">error_outline</i></a>
-          <a class="hideButton" id="hideid" href="javascript:void(0)" onclick="return hideCardU(this);" title="Hide Card"><i class="material-icons">visibility_off</i></a>
-          <a class="updateButton" id="updateid" href="javascript:void(0)" onclick="return updateCard(this);" title="Update Card"><i class="material-icons">mode_edit</i></a>
-          <h5 class="companyName"></h5>
-          <p class="companyDescription"></p>
-        </div>
-        <div onclick="return applyAction(this);">
-        <a class="waves-effect waves-light btn applyButton blue" href="" target="_blank" >Apply</a>
+
+        <div id="selector">
         </div>
 
-        <div class="card-action tagsdiv">
-            <ul class='tags'>
-            </ul>
+        <div class="card horizontal" id="cardtemplate" style="display:none">
+            <div class="card-image">
+                <img class="companyLogo ImageFixDem" src="images/logos/facebook.png" style="width: 150px; height: 150px;">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content companyInfo">
+                    <a class="fav favButton" id="favid" href="javascript:void(0)" onclick="return addtoFav(this);" title="Favorite">☆</a>
+                    <a class="removalButton" id="removeid" href="javascript:void(0)" onclick="return markRemoval(this);" title="Mark For Removal"><i class="material-icons">error_outline</i></a>
+                    <a class="hideButton" id="hideid" href="javascript:void(0)" onclick="return hideCardU(this);" title="Hide Card"><i class="material-icons">visibility_off</i></a>
+                    <a class="updateButton" id="updateid" href="javascript:void(0)" onclick="return updateCard(this);" title="Update Card"><i class="material-icons">mode_edit</i></a>
+                    <h5 class="companyName"></h5>
+                    <p class="companyDescription"></p>
+                </div>
+                <div onclick="return applyAction(this);">
+                    <a class="waves-effect waves-light btn applyButton blue" href="" target="_blank">Apply</a>
+                </div>
+
+                <div class="card-action tagsdiv">
+                    <ul class='tags'>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
-    </div>
-    <div class="content" id="content">
-    </div>
-    <script type="text/javascript" src="scripts/jQuery.js"></script>
-    <script src="scripts/materialize.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
-    <script src="scripts/firebaseSetUp.js"></script>
-    <script type="text/javascript" src="scripts/main.js"></script>
-    <script type="text/javascript" src="scripts/user.js"></script>
+        <div class="content" id="content">
+        </div>
+        <div id="floatingButton">
+        </div>
+        <script type="text/javascript" src="scripts/jQuery.js"></script>
+        <script src="scripts/materialize.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
+        <script src="scripts/firebaseSetUp.js"></script>
+        <script type="text/javascript" src="scripts/main.js"></script>
+        <script type="text/javascript" src="scripts/user.js"></script>
+        <script type="text/javascript" src="scripts/app.js"></script>
+        <script type="text/javascript" src="scripts/hide.js"></script>
 
 
-    <script>
+        <script>
     content();
     function LoadContent(){
         content();
     }
     function LoadLogin(){
-        $("#a").load("views/login.html");
+        loginContent();
     }
     function LoadUser(){
         userContent();
@@ -100,7 +140,7 @@
         }
     }
     function LoadHidden(){       
-        $("#a").load("views/hide.html");
+        hiddenContent();
     }
     function LoadUpdate(){
         $("#a").load("views/update.html");
@@ -129,6 +169,19 @@
        $("#navbarid").removeClass("blue");
     }
     });
+
+        $(document).ready(function(){
+    $('.tooltipped').tooltip({delay: 50});
+    });
+
+
+    $('#search').on('keyup keypress', function(e) {
+  var keyCode = e.keyCode || e.which;
+  if (keyCode === 13) { 
+    e.preventDefault();
+    return false;
+  }
+});
 
 
     </script>

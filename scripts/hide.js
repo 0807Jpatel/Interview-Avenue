@@ -1,16 +1,20 @@
 var user;
+function hiddenContent(){
+
 if (navigator.onLine) {
+    $("#floatingButton").empty();
     user = firebase.auth().currentUser;
     HideInit();
 } else {
     offLineHideCards();
 }
-
+}
 
 function HideInit(){
 if(user){
         var user_data = database.ref('Users/'+user.uid);
         var favArray = user_data.child('hidden');
+        $("#content").empty();
         favArray.once('value').then(function(snapshot){
            snapshot.forEach(function(company_id){
                // console.log(company_id.val());       
@@ -18,7 +22,7 @@ if(user){
                 var company = Company_Data.child(company_id.val());
                 company.once('value').then(function(currentCompany){
 
-                    var clone = $('#cardtemplate').clone().prop({ id: company_id.val() }).appendTo("#hide_content");
+                    var clone = $('#cardtemplate').clone().prop({ id: company_id.val() }).appendTo("#content");
                     clone.removeAttr('style');
                     
                     var cl = clone.find('.companyLogo');
@@ -34,6 +38,12 @@ if(user){
                     currentCompany.child('Tag').forEach(function (tagIndex) {
                         cn.append('<li class=\"tag ' + tagIndex.val() + '\">' + tagIndex.val() + "<\/li>");
                     })
+                    clone.find('.favButton').remove();
+                    clone.find('.removalButton').remove();
+                    clone.find('.hideButton').remove();
+                    clone.find('.updateButton').remove();
+                    clone.find('.companyInfo').prepend("<a class=\"hideButton\" id=\"hideid\" href=\"javascript:void(0)\" onclick=\"return showHidden(this);\" title=\"Unhide Card\"><i class=\"material-icons\">visibility</i></a>");
+
                 })
             })
         })
@@ -68,9 +78,9 @@ function offLineHideCards(){
     var userO = localStorage.getItem('user');
     var favO = JSON.parse(userO).hidden;
 
-    $("#hide_content").empty();
+    $("#content").empty();
     $.each(favO, function (index, value) {
-        var clone = $('#cardtemplate').clone().prop({ id: value }).appendTo("#hide_content");
+        var clone = $('#cardtemplate').clone().prop({ id: value }).appendTo("#content");
         clone.removeAttr('style');
         value = value.toString();
         companyInfo = company[value];

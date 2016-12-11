@@ -3,6 +3,16 @@ provider.addScope('email');
 provider.addScope('profile');
 provider.addScope('')
 
+
+function loginContent(){
+    $("#content").empty();
+    $("#selector").empty();
+    $("#floatingButton").empty();
+    $("#content").append("<div class=\"card horizontal\" id=\"cardtemplate\"><img id=\"googleLoginBtn\" src=\"../images/logos/btn_google_signin_dark_normal_web@2x.png\"></div>");
+    addListner();
+}
+
+function addListner(){
 var googleLoginBtn2 = document.getElementById("googleLoginBtn");
 googleLoginBtn.addEventListener('click', e => {
     firebase.auth().signInWithRedirect(provider);
@@ -39,26 +49,8 @@ googleLoginBtn.addEventListener('click', e => {
     // });
 
 })
+}
 
-firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-        counter++;
-        if (counter == 1) {
-            googleLoginBtn2.style.display = "none";
-
-            console.log(user.displayName);
-            console.log(user.email);
-            console.log(user.uid);
-
-            writeUserData(user.uid, user.displayName, user.email, user.photoURL);
-            console.log("counter = " + counter);
-            LoadUser();
-        }
-    } else {
-        googleLoginBtn2.style.removeProperty('display');
-    }
-    return;
-})
 
 function writeUserData(userId, name, email, imageUrl) {
     firebase.database().ref('Users/' + userId).update({
