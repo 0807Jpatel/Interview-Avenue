@@ -18,7 +18,6 @@ function content() {
         });
         init(Company_Data);
     } else {
-        console.log("something2");
         offLineCards();
     }
 }
@@ -32,7 +31,6 @@ function addtoFav(item) {
         var par = $(item).parents('[id]:eq(0)').attr("id");
         var favorites = database.ref('Users/' + user.uid + "/favorites");
         favorites.once("value").then(function (snapshot) {
-            console.log(snapshot.child(parseInt(par)).val());
             var b = snapshot.child(parseInt(par)).exists(); // true
             if (!b) {
                 var updates = {};
@@ -99,7 +97,6 @@ function markRemoval(item) {
         var par = $(item).parents('[id]:eq(0)').attr("id");
         var removal = database.ref('Removal');
         removal.once("value").then(function (snapshot) {
-            console.log(snapshot.child(parseInt(par)).val());
             var b = snapshot.child(parseInt(par)).exists(); // true
             if (!b) {
                 var remove = {};
@@ -150,7 +147,6 @@ function hideCards() {
         var hide = database.ref('Users/' + user.uid + "/hidden");
         hide.once("value").then(function (snapshot) {
             snapshot.forEach(function (hidden) {
-                // console.log(hidden.val());
                 document.getElementById(hidden.val()).remove();
             })
         })
@@ -163,7 +159,6 @@ function addFavIcon() {
         var hide = database.ref('Users/' + user.uid + "/favorites");
         hide.once("value").then(function (snapshot) {
             snapshot.forEach(function (fav) {
-                // console.log(hidden.val());
                 var cop = document.getElementById(fav.val());
                 var cp = $(cop).find('.fav');
                 cp.text("★");
@@ -202,12 +197,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 
         loginCounter++;
         if (loginCounter == 1) {
-            console.log(user.displayName);
-            console.log(user.email);
-            console.log(user.uid);
-
             writeUserData(user.uid, user.displayName, user.email, user.photoURL);
-            console.log("counter = " + loginCounter);
         }
 
 
@@ -291,7 +281,6 @@ function initR(Company_Data) {
 
 
 function applyAction(item) {
-    console.log("lol");
     var par = $(item).parents('[id]:eq(0)').attr("id");
     var Company_Data = database.ref('Company_Data/' + parseInt(par) + "/clicks");
     Company_Data.once('value').then(function (snapshot) {
@@ -350,15 +339,12 @@ function offLineCards() {
     })
 
     var obj = localStorage.getItem('user');
-    // console.log("outside if" + obj);
     if (obj) {
         obj = JSON.parse(obj);
         obj1 = obj.favorites;
         $.each(obj1, function (index, value) {
-            // console.log(value);
             var cop = document.getElementById(value);
             var cp = $(cop).find('.fav');
-            // console.log(cp);
             cp.text("★");
         })
         obj1 = obj.hidden;
@@ -373,7 +359,6 @@ function offLineCards() {
 function filter() {
 
     var tab = $('.tab').find('.active');
-    // console.log(tab.text());
     var search = document.getElementById('search');
     search = search.value.toLowerCase();
 
@@ -405,7 +390,6 @@ function filter() {
             $.each(tags, function (index, value) {
 
                 var lang = value.innerText.toLowerCase();
-                // console.log(lang);
 
                 if (lang.search(search) > -1) {
                     var par = $(value).parents('[id]:eq(0)');

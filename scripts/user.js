@@ -30,8 +30,6 @@ function UserInit() {
         $("#content").empty();
         favArray.once('value').then(function (snapshot) {
             snapshot.forEach(function (company_id) {
-                // console.log(company_id.val());       
-                //  console.log("in foreach loop");
                 var company = Company_Data.child(company_id.val());
                 company.once('value').then(function (currentCompany) {
 
@@ -83,9 +81,7 @@ function UserInit() {
             })
         })
 
-    } else {
-        console.log("YOU SHALL NOT PASS!!!!");
-    }
+    } else {    }
 }
 
 function offLineUserCards() {

@@ -70,13 +70,9 @@ function checkDupURL(){
             snapshot.forEach(function (company) {
 
                 var companyURL = company.child('URL').val();
-                console.log(companyURL);
-
                 if (companyURL === urlvalue)    {
                     urlExists = true;
                 }
-
-                console.log(urlExists);
 
             })
             if(urlExists){
@@ -98,8 +94,6 @@ function anotherMethod(){
                     urlExists = true;
                 }
                 
-                console.log(urlExists);
-
             })
             if(urlExists){
                 Materialize.toast('URL Already Exists', 4000);

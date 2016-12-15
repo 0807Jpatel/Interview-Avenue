@@ -163,7 +163,6 @@
     var connectedRef = firebase.database().ref(".info/connected");
     connectedRef.on("value", function(snap) {
     if (snap.val() === true){   
-       console.log(firebase);    
        $("#navbarid").addClass("blue");
        $("#navbarid").removeClass("grey");
     } else {

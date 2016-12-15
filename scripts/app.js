@@ -37,18 +37,7 @@ googleLoginBtn.addEventListener('click', e => {
         var email = error.email;
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
-        // ...
     });
-
-    // firebase.auth().signInWithRedirect(provider)
-    //     .catch(function (error) {
-    //         var errorCode = error.code;
-    //         var errorMessage = error.message;
-    //         console.log(errorMessage + '\n');
-    //         var email = error.email;
-    //         console.log(email + '\n');
-    //         var credential = error.credential;
-    // });
 
     } else {
        Materialize.toast("Can't login offline", 4000);
