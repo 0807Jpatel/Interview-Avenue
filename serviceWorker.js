@@ -1,6 +1,7 @@
 var CACHE_NAME = 'InternCache';
 var urlsToCache = [
   '/',
+  '/images/',
   '/index.html',
   '/styles/main2.css',
   '/styles/materialize.min.css',

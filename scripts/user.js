@@ -9,6 +9,9 @@ function userContent() {
     $("#selector").empty();
     $("#floatingButton").empty();
     $("#floatingButton").append("<div class=\"fixed-action-btn horizontal\" style=\"right: 10%; bottom: 10%\"><a class=\"btn-floating btn-large red tooltipped\" data-position=\"top\" data-delay=\"50\" data-tooltip=\"More Options\"><i class=\"large material-icons\">mode_edit</i></a><ul><li><a class=\"btn-floating blue\" href=\"javascript:void(0)\" onclick=\"return LoadForm(this)\" title=\"Suggest New Company\"><i class=\"material-icons\">add</i></a></li><li><a class=\"btn-floating yellow darken-1\" href=\"javascript:void(0)\" onclick=\"return LoadHidden(this)\" title=\"View Hidden Cards\"><i class=\"material-icons\">visibility</i></a></li></ul></div>");
+    $(document).ready(function(){
+    $('.tooltipped').tooltip({delay: 50});
+    });
     if (navigator.onLine) {
         database = firebase.database();
         Company_Data = database.ref('Company_Data');
@@ -60,9 +63,14 @@ function UserInit() {
                     var clone = $('#cardtemplate').clone().prop({ id: suggestion.val() }).appendTo("#content");
                     clone.removeAttr('style');
                     var cl = clone.find('.companyLogo');
+                    if(currentCompany.child('CompanyLogo').val() === ""){
+                    cl.attr('src', "images/logos/noImage.png");
+                    }else{
                     cl.attr('src', currentCompany.child('CompanyLogo').val());
+                    }
                     var link = clone.find('.applyButton');
                     link.attr('href', currentCompany.child('URL').val());
+                    clone.find("#applyDiv").removeAttr('onclick');
                     var desc = clone.find('.companyDescription');
                     desc.text(currentCompany.child('Description').val());
                     var cn = clone.find('.companyName');

@@ -13,6 +13,9 @@ function content() {
         $("#floatingButton").append("<div class=\"fixed-action-btn horizontal\" style=\"right: 10%; bottom: 10%\"><a class=\"btn-floating btn-large red lighten-1 tooltipped\" data-position=\"top\" data-delay=\"50\" data-tooltip=\"Sort\"><i class=\"large material-icons\">sort_by_alpha</i> </a><ul><li><a class=\"btn-floating deep-purple lighten-1\" href=\"javascript:void(0)\" onclick=\"return sortByAlpha(this)\" title=\"Sort By Alphabet\"><i class=\"material-icons\">sort_by_alpha</i></a></li><li><a class=\"btn-floating light-green accent-4\" href=\"javascript:void(0)\" onclick=\"return sortByDate(this)\" title=\"Sort By Deadline\"><i class=\"material-icons\">schedule</i></a></li><li><a class=\"btn-floating amber darken-4\" href=\"javascript:void(0)\" onclick=\"return sortByClick(this)\" title=\"Sort By Trending\"><i class=\"material-icons\">trending_up</i></a></li></ul></div>");
         database = firebase.database();
         Company_Data = database.ref('Company_Data');
+        $(document).ready(function(){
+        $('.tooltipped').tooltip({delay: 50});
+        });
         init(Company_Data);
     } else {
         console.log("something2");

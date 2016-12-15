@@ -86,7 +86,7 @@
 
         <div class="card horizontal" id="cardtemplate" style="display:none">
             <div class="card-image">
-                <img class="companyLogo ImageFixDem" src="images/logos/facebook.png" style="width: 150px; height: 150px;">
+                <img class="companyLogo ImageFixDem" src="images/logos/noImage.png" style="width: 150px; height: 150px;">
             </div>
             <div class="card-stacked">
                 <div class="card-content companyInfo">
@@ -97,7 +97,7 @@
                     <h5 class="companyName"></h5>
                     <p class="companyDescription"></p>
                 </div>
-                <div onclick="return applyAction(this);">
+                <div id="applyDiv" onclick="return applyAction(this);">
                     <a class="waves-effect waves-light btn applyButton blue" href="" target="_blank">Apply</a>
                 </div>
 
@@ -119,7 +119,9 @@
         <script type="text/javascript" src="scripts/user.js"></script>
         <script type="text/javascript" src="scripts/app.js"></script>
         <script type="text/javascript" src="scripts/hide.js"></script>
-
+        <script type="text/javascript" src="scripts/resources.js"></script>
+        <script type="text/javascript" src="scripts/update.js"></script>
+        <script type="text/javascript" src="scripts/form.js"></script>
 
         <script>
     content();
@@ -134,7 +136,7 @@
     }
     function LoadForm(){
         if(navigator.onLine){
-            $("#a").load("views/form.html");
+            formContent();
         }else{
             Materialize.toast("Need Connection to Suggest", 4000);
         }
@@ -143,10 +145,10 @@
         hiddenContent();
     }
     function LoadUpdate(){
-        $("#a").load("views/update.html");
+        updateContent();
     }
     function LoadResources()    {
-        $("#a").load("views/resources.html");
+        resourcesContent();
     }
     $('.button-collapse').sideNav({
       closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
@@ -182,8 +184,6 @@
     return false;
   }
 });
-
-
     </script>
 
 </body>

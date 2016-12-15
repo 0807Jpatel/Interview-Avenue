@@ -2,6 +2,12 @@
 var companyName = UPDATECARD.find(".companyName").text();
 $("#updateTitle").text("Update Form for " + companyName);
 
+function updateContent() {
+    $("#selector").empty();
+    $("#floatingButton").empty();
+    $("#content").empty();    
+    $("#content").append(" <div class=\"row\"> <form class=\"col s12\"> <h3 id=\"updateTitle\" class=\"center\">Update Form</h3> <div class=\"row\"> <div class=\"input-field col s12\"> <textarea id=\"description\" class=\"materialize-textarea\" length=\"200\"></textarea> <label for=\"description\">What needs updating?*</label> </div> </div> </form> </div> <button class=\"updateButton btn waves-effect waves-light\" type=\"submit\" name=\"action\" onclick=\"addUpdate()\">Submit <i class=\"material-icons right\">send</i> </button>");
+}
 function addUpdate() {
     // get ids
     var Description = document.getElementById("description");
