@@ -9,8 +9,8 @@ function userContent() {
     $("#selector").empty();
     $("#floatingButton").empty();
     $("#floatingButton").append("<div class=\"fixed-action-btn horizontal\" style=\"right: 10%; bottom: 10%\"><a class=\"btn-floating btn-large red tooltipped\" data-position=\"top\" data-delay=\"50\" data-tooltip=\"More Options\"><i class=\"large material-icons\">mode_edit</i></a><ul><li><a class=\"btn-floating blue\" href=\"javascript:void(0)\" onclick=\"return LoadForm(this)\" title=\"Suggest New Company\"><i class=\"material-icons\">add</i></a></li><li><a class=\"btn-floating yellow darken-1\" href=\"javascript:void(0)\" onclick=\"return LoadHidden(this)\" title=\"View Hidden Cards\"><i class=\"material-icons\">visibility</i></a></li></ul></div>");
-    $(document).ready(function(){
-    $('.tooltipped').tooltip({delay: 50});
+    $(document).ready(function () {
+        $('.tooltipped').tooltip({ delay: 50 });
     });
     if (navigator.onLine) {
         database = firebase.database();
@@ -26,32 +26,41 @@ function UserInit() {
 
     if (user) {
         var user_data = database.ref('Users/' + user.uid);
-        var favArray = user_data.child('favorites');
         $("#content").empty();
+        var favArray = user_data.child('favorites');
+
+
         favArray.once('value').then(function (snapshot) {
-            snapshot.forEach(function (company_id) {
-                var company = Company_Data.child(company_id.val());
-                company.once('value').then(function (currentCompany) {
 
-                    var clone = $('#cardtemplate').clone().prop({ id: company_id.val() }).appendTo("#content");
-                    clone.removeAttr('style');
+            if (snapshot.val() !== null) {
 
-                    var cl = clone.find('.companyLogo');
-                    cl.attr('src', currentCompany.child('CompanyLogo').val());
-                    var link = clone.find('.applyButton');
-                    link.attr('href', currentCompany.child('URL').val());
-                    var desc = clone.find('.companyDescription');
-                    desc.text(currentCompany.child('Description').val());
-                    var cn = clone.find('.companyName');
-                    cn.html(currentCompany.child('name').val());
-                    var cn = clone.find('.tags');
-                    currentCompany.child('Tag').forEach(function (tagIndex) {
-                        cn.append('<li class=\"tag ' + tagIndex.val() + '\">' + tagIndex.val() + "<\/li>");
+                snapshot.forEach(function (company_id) {
+                    var company = Company_Data.child(company_id.val());
+                    company.once('value').then(function (currentCompany) {
+
+                        var clone = $('#cardtemplate').clone().prop({ id: company_id.val() }).appendTo("#content");
+                        clone.removeAttr('style');
+
+                        var cl = clone.find('.companyLogo');
+                        cl.attr('src', currentCompany.child('CompanyLogo').val());
+                        var link = clone.find('.applyButton');
+                        link.attr('href', currentCompany.child('URL').val());
+                        var desc = clone.find('.companyDescription');
+                        desc.text(currentCompany.child('Description').val());
+                        var cn = clone.find('.companyName');
+                        cn.html(currentCompany.child('name').val());
+                        var cn = clone.find('.tags');
+                        currentCompany.child('Tag').forEach(function (tagIndex) {
+                            cn.append('<li class=\"tag ' + tagIndex.val() + '\">' + tagIndex.val() + "<\/li>");
+                        })
+                        var cp = $(clone).find('.fav');
+                        cp.text("★");
                     })
-                    var cp = $(clone).find('.fav');
-                    cp.text("★");
                 })
-            })
+            }
+            else {
+                Materialize.toast("You have no favorites. Try adding some!", 4000);
+            }
         })
         var suggestPD = user_data.child('suggestionsPD');
         suggestPD.once('value').then(function (snapsnot) {
@@ -61,10 +70,10 @@ function UserInit() {
                     var clone = $('#cardtemplate').clone().prop({ id: suggestion.val() }).appendTo("#content");
                     clone.removeAttr('style');
                     var cl = clone.find('.companyLogo');
-                    if(currentCompany.child('CompanyLogo').val() === ""){
-                    cl.attr('src', "images/logos/noImage.png");
-                    }else{
-                    cl.attr('src', currentCompany.child('CompanyLogo').val());
+                    if (currentCompany.child('CompanyLogo').val() === "") {
+                        cl.attr('src', "images/logos/noImage.png");
+                    } else {
+                        cl.attr('src', currentCompany.child('CompanyLogo').val());
                     }
                     var link = clone.find('.applyButton');
                     link.attr('href', currentCompany.child('URL').val());
@@ -81,7 +90,7 @@ function UserInit() {
             })
         })
 
-    } else {    }
+    }
 }
 
 function offLineUserCards() {

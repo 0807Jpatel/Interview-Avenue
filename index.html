@@ -35,7 +35,7 @@
                     </li>
                     <li id="login_li" style="display: none;"><a href="javascript:void(0)" onclick="LoadLogin()">Login</a></li>
                     <li id="logout_li" style="display: none;"><a href="javascript:void(0)" onclick="LogOut()">Logout</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li><a href="javascript:void(0)" onclick="LoadAbout()">About</a></li>
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
                     <li><a href="javascript:void(0)" onclick="LoadContent()">Internship</a></li>
@@ -45,7 +45,7 @@
                     </li>
                     <li id="login_li2" style="display: none;"><a href="javascript:void(0)" onclick="LoadLogin()">Login</a></li>
                     <li id="logout_li2" style="display: none;"><a href="javascript:void(0)" onclick="LogOut()">Logout</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li><a href="javascript:void(0)" onclick="LoadAbout()">About</a></li>
                 </ul>
             </div>
         </nav>
@@ -93,7 +93,7 @@
                     <a class="fav favButton" id="favid" href="javascript:void(0)" onclick="return addtoFav(this);" title="Favorite">☆</a>
                     <a class="removalButton" id="removeid" href="javascript:void(0)" onclick="return markRemoval(this);" title="Mark For Removal"><i class="material-icons">error_outline</i></a>
                     <a class="hideButton" id="hideid" href="javascript:void(0)" onclick="return hideCardU(this);" title="Hide Card"><i class="material-icons">visibility_off</i></a>
-                    <a class="updateButton" id="updateid" href="javascript:void(0)" onclick="return updateCard(this);" title="Update Card"><i class="material-icons">mode_edit</i></a>
+                    <a class="updateButton" id="updateid" href="javascript:void(0)" onclick="return LoadUpdate(this);" title="Update Card"><i class="material-icons">mode_edit</i></a>
                     <h5 class="companyName"></h5>
                     <p class="companyDescription"></p>
                 </div>
@@ -122,11 +122,15 @@
         <script type="text/javascript" src="scripts/resources.js"></script>
         <script type="text/javascript" src="scripts/update.js"></script>
         <script type="text/javascript" src="scripts/form.js"></script>
+        <script type="text/javascript" src="scripts/about.js"></script>
 
         <script>
     content();
     function LoadContent(){
         content();
+    }
+    function LoadAbout()    {
+        aboutContent();
     }
     function LoadLogin(){
         loginContent();
@@ -144,8 +148,8 @@
     function LoadHidden(){       
         hiddenContent();
     }
-    function LoadUpdate(){
-        updateContent();
+    function LoadUpdate(item){
+        updateContent(item);
     }
     function LoadResources()    {
         resourcesContent();

@@ -1,12 +1,21 @@
 // document.getElementById("#updateTitle").innerText = ("Update Form for " + (UPDATECARD).find(".companyName").text());
-var companyName = UPDATECARD.find(".companyName").text();
-$("#updateTitle").text("Update Form for " + companyName);
+// var companyName = UPDATECARD.find(".companyName").text();
+// $("#updateTitle").text("Update Form for " + companyName);
 
-function updateContent() {
+function updateContent(item) {
+
+    var par = $(item).parents('[id]:eq(0)').attr("id");
+    // console.log(par);
+    var name = document.getElementById(par);
+    name = $(name).find('.companyName');
+    // console.log(name.text());
+
     $("#selector").empty();
     $("#floatingButton").empty();
     $("#content").empty();    
     $("#content").append(" <div class=\"row\"> <form class=\"col s12\"> <h3 id=\"updateTitle\" class=\"center\">Update Form</h3> <div class=\"row\"> <div class=\"input-field col s12\"> <textarea id=\"description\" class=\"materialize-textarea\" length=\"200\"></textarea> <label for=\"description\">What needs updating?*</label> </div> </div> </form> </div> <button class=\"updateButton btn waves-effect waves-light\" type=\"submit\" name=\"action\" onclick=\"addUpdate()\">Submit <i class=\"material-icons right\">send</i> </button>");
+    
+    $("#updateTitle").text("Update Form for " + name.text());
 }
 function addUpdate() {
     // get ids

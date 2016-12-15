@@ -1,62 +1,67 @@
 var user;
-function hiddenContent(){
+function hiddenContent() {
 
-if (navigator.onLine) {
-    $("#floatingButton").empty();
-    user = firebase.auth().currentUser;
-    HideInit();
-} else {
-    offLineHideCards();
-}
+    if (navigator.onLine) {
+        $("#floatingButton").empty();
+        user = firebase.auth().currentUser;
+        HideInit();
+    } else {
+        offLineHideCards();
+    }
 }
 
-function HideInit(){
-if(user){
-        var user_data = database.ref('Users/'+user.uid);
+function HideInit() {
+    if (user) {
+        var user_data = database.ref('Users/' + user.uid);
         var favArray = user_data.child('hidden');
         $("#content").empty();
-        favArray.once('value').then(function(snapshot){
-           snapshot.forEach(function(company_id){
-                var company = Company_Data.child(company_id.val());
-                company.once('value').then(function(currentCompany){
+        favArray.once('value').then(function (snapshot) {
 
-                    var clone = $('#cardtemplate').clone().prop({ id: company_id.val() }).appendTo("#content");
-                    clone.removeAttr('style');
-                    
-                    var cl = clone.find('.companyLogo');
-                    cl.attr('src', currentCompany.child('CompanyLogo').val());
+            if (snapshot.val() !== null) {
+                snapshot.forEach(function (company_id) {
+                    var company = Company_Data.child(company_id.val());
+                    company.once('value').then(function (currentCompany) {
 
-                    var desc = clone.find('.companyDescription');
-                    desc.text(currentCompany.child('Description').val());
+                        var clone = $('#cardtemplate').clone().prop({ id: company_id.val() }).appendTo("#content");
+                        clone.removeAttr('style');
 
-                    var cn = clone.find('.companyName');
-                    cn.html(currentCompany.child('name').val());
-                    
-                    var cn = clone.find('.tags');
-                    currentCompany.child('Tag').forEach(function (tagIndex) {
-                        cn.append('<li class=\"tag ' + tagIndex.val() + '\">' + tagIndex.val() + "<\/li>");
+                        var cl = clone.find('.companyLogo');
+                        cl.attr('src', currentCompany.child('CompanyLogo').val());
+
+                        var desc = clone.find('.companyDescription');
+                        desc.text(currentCompany.child('Description').val());
+
+                        var cn = clone.find('.companyName');
+                        cn.html(currentCompany.child('name').val());
+
+                        var cn = clone.find('.tags');
+                        currentCompany.child('Tag').forEach(function (tagIndex) {
+                            cn.append('<li class=\"tag ' + tagIndex.val() + '\">' + tagIndex.val() + "<\/li>");
+                        })
+                        clone.find('.favButton').remove();
+                        clone.find('.removalButton').remove();
+                        clone.find('.hideButton').remove();
+                        clone.find('.updateButton').remove();
+                        clone.find('.companyInfo').prepend("<a class=\"hideButton\" id=\"hideid\" href=\"javascript:void(0)\" onclick=\"return showHidden(this);\" title=\"Unhide Card\"><i class=\"material-icons\">visibility</i></a>");
+
                     })
-                    clone.find('.favButton').remove();
-                    clone.find('.removalButton').remove();
-                    clone.find('.hideButton').remove();
-                    clone.find('.updateButton').remove();
-                    clone.find('.companyInfo').prepend("<a class=\"hideButton\" id=\"hideid\" href=\"javascript:void(0)\" onclick=\"return showHidden(this);\" title=\"Unhide Card\"><i class=\"material-icons\">visibility</i></a>");
-
                 })
-            })
+            }
+            else {
+                Materialize.toast("You have no hidden cards right now.", 4000);
+            }
         })
-    }else{
-}
+    }
 }
 
-function showHidden(item){
+function showHidden(item) {
     var user = firebase.auth().currentUser;
     if (user) {
         var par = $(item).parents('[id]:eq(0)').attr("id");
         var hide = database.ref('Users/' + user.uid + "/hidden");
 
         hide.once("value").then(function (snapshot) {
-            hide.child(parseInt(par)).remove();            
+            hide.child(parseInt(par)).remove();
         })
 
         document.getElementById(par).remove();
@@ -68,7 +73,7 @@ function showHidden(item){
     }
 }
 
-function offLineHideCards(){
+function offLineHideCards() {
     var company = localStorage.getItem('company_data');
     var company = JSON.parse(company);
 
