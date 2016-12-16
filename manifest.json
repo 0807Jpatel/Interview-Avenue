@@ -1,6 +1,6 @@
 {
-    "name": "InternWebApp",
-    "short_name": "InternWebApp",
+    "name": "Internily",
+    "short_name": "Internily",
     "icons": [{
         "src": "/images/icons/icon-128x128.png",
         "sizes": "128x128",
@@ -24,6 +24,6 @@
     }],
     "start_url": "/index.html",
     "display": "standalone",
-    "background_color": "#F7F7F7",
-    "theme_color": "#000000"
+    "background_color": "#ef5350",
+    "theme_color": "#2196f3"
 }

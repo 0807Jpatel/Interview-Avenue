@@ -14,6 +14,7 @@ var urlsToCache = [
   '/scripts/materialize.min.js',
   '/scripts/user.js',
   '/scripts/update.js',
+  '/scripts/about.js',
   '/views/content.html',
   '/views/hide.html',
   '/views/user.html',
