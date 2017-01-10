@@ -73,7 +73,11 @@ function UserInit() {
                     if (currentCompany.child('CompanyLogo').val() === "") {
                         cl.attr('src', "images/logos/noImage.png");
                     } else {
-                        cl.attr('src', "gs://internwebapp-b3703.appspot.com/Screenshot from 2017-01-10 16-30-51.png");
+                        var cc = firebase.storage().ref(currentCompany.child('ImageName').val());
+                        cc.getDownloadURL().then(function(url) {
+                            cl.attr('src', url);
+                        })
+                        
                     }
                     var link = clone.find('.applyButton');
                     link.attr('href', currentCompany.child('URL').val());
