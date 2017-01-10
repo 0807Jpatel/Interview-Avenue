@@ -5,16 +5,16 @@ var currentSort = "name";
 function content() {
 
     $("#selector").empty();
-    $("#selector").append("  <div class=\"row\" style=\"margin-bottom: 5px;\"><div class=\"col s12\"><ul class=\"tabs\"><li class=\"tab col s6\"><a class=\"active\" id=\"searchByNameId\">Search By Name</a></li><li class=\"tab col s6\"><a>Search By Tag</a></li></ul></div></div>");
-    $("#selector").append("    <nav><div class=\"nav-wrapper\"><form><div class=\"input-field\"><input id=\"search\" type=\"search\" required onkeyup=\"filter()\" autocomplete=\"off\"><label for=\"search\"><i class=\"material-icons\">search</i></label><i class=\"material-icons\" onclick=\"clearSearch()\">close</i></div></form></div></nav>");
+    $("#selector").append("  <div class=\"row\" style=\"margin-bottom: 5px;\"><div class=\"col s12\"><ul class=\"tabs\"><li class=\"tab col s6\"><a class=\"active\" id=\"searchByNameId\" style=\"color: #3EACA8\" onclick=\"activeSearch()\">Search By Name</a></li><li class=\"tab col s6\" onclick=\"activeSearch()\"><a style=\"color: #3EACA8\">Search By Tag</a></li></ul></div></div>");
+    $("#selector").append("    <nav style=\"background-color: #3EACA8\"><div class=\"nav-wrapper\"><form><div class=\"input-field\"><input id=\"search\" type=\"search\" required onkeyup=\"filter()\" autocomplete=\"off\"><label for=\"search\"><i class=\"material-icons\">search</i></label><i class=\"material-icons\" onclick=\"clearSearch()\">close</i></div></form></div></nav>");
     $('ul.tabs').tabs();
     $("#floatingButton").empty();
     if (navigator.onLine) {
         $("#floatingButton").append("<div class=\"fixed-action-btn horizontal\" style=\"right: 10%; bottom: 10%\"><a class=\"btn-floating btn-large red lighten-1 tooltipped\" data-position=\"top\" data-delay=\"50\" data-tooltip=\"Sort\"><i class=\"large material-icons\">sort_by_alpha</i> </a><ul><li><a class=\"btn-floating deep-purple lighten-1\" href=\"javascript:void(0)\" onclick=\"return sortByAlpha(this)\" title=\"Sort By Alphabet\"><i class=\"material-icons\">sort_by_alpha</i></a></li><li><a class=\"btn-floating light-green accent-4\" href=\"javascript:void(0)\" onclick=\"return sortByDate(this)\" title=\"Sort By Deadline\"><i class=\"material-icons\">schedule</i></a></li><li><a class=\"btn-floating amber darken-4\" href=\"javascript:void(0)\" onclick=\"return sortByClick(this)\" title=\"Sort By Trending\"><i class=\"material-icons\">trending_up</i></a></li></ul></div>");
         database = firebase.database();
         Company_Data = database.ref('Company_Data');
-        $(document).ready(function(){
-        $('.tooltipped').tooltip({delay: 50});
+        $(document).ready(function () {
+            $('.tooltipped').tooltip({ delay: 50 });
         });
         init(Company_Data);
     } else {
@@ -113,49 +113,76 @@ function init(Company_Data) {
     Company_Data.once('value').then(function (snapshot) {
         var index = 1;
         $("#content").empty();
-        snapshot.forEach(function (company) {
-            var clone = $('#cardtemplate').clone().prop({ id: company.key }).appendTo("#content");
-            clone.removeAttr('style');
+        var cc = false;
+        if (firebase.auth().currentUser) {
+            snapshot.forEach(function (company) {
+                var clone = $('#cardtemplate').clone().prop({ id: company.key }).appendTo("#content");
+                clone.removeAttr('style');
 
-            var cl = clone.find('.companyLogo');
-            cl.attr('src', company.child('CompanyLogo').val());
+                var cl = clone.find('.companyLogo');
+                cl.attr('src', company.child('CompanyLogo').val());
 
-            var link = clone.find('.applyButton');
-            link.attr('href', company.child('URL').val());
+                var link = clone.find('.applyButton');
+                link.attr('href', company.child('URL').val());
 
-            var desc = clone.find('.companyDescription');
-            desc.text(company.child('Description').val());
+                var desc = clone.find('.companyDescription');
+                desc.text(company.child('Description').val());
 
-            var cn = clone.find('.companyName');
-            cn.html(company.child('name').val());
+                var cn = clone.find('.companyName');
+                cn.html(company.child('name').val());
 
-            var cn = clone.find('.tags');
-            company.child('Tag').forEach(function (tagIndex) {
-                cn.append('<li class=\"tag ' + tagIndex.val() + '\">' + tagIndex.val() + "<\/li>");
+                var cn = clone.find('.tags');
+                company.child('Tag').forEach(function (tagIndex) {
+                    cn.append('<li class=\"tag ' + tagIndex.val() + '\">' + tagIndex.val() + "<\/li>");
+                })            // action.append('<li class="fav" id="favid"></li>');
             })
-            // action.append('<li class="fav" id="favid"></li>');
-        })
-        hideCards();
-        addFavIcon();
+            hideCards();
+            addFavIcon();
+        } else {
+            snapshot.forEach(function (company) {
+                var clone = $('#cardtemplate').clone().prop({ id: company.key }).appendTo("#content");
+                clone.removeAttr('style');
+
+                var cl = clone.find('.companyLogo');
+                cl.attr('src', company.child('CompanyLogo').val());
+
+                var link = clone.find('.applyButton');
+                link.attr('href', company.child('URL').val());
+
+                var desc = clone.find('.companyDescription');
+                desc.text(company.child('Description').val());
+
+                var cn = clone.find('.companyName');
+                cn.html(company.child('name').val());
+
+                var cn = clone.find('.tags');
+                company.child('Tag').forEach(function (tagIndex) {
+                    cn.append('<li class=\"tag ' + tagIndex.val() + '\">' + tagIndex.val() + "<\/li>");
+                })
+                var cp = $(clone).find('.fav');
+                cp.css('color', 'grey');
+                var cr = $(clone).find('.removalButton');
+                cr.css('color', 'grey');
+                var ch = $(clone).find('.hideButton');
+                ch.css('color', 'grey');
+                var cu = $(clone).find('.updateButton');
+                cu.css('color', 'grey');
+            })
+        }
         saveDataLocally();
     })
 }
 
 function hideCards() {
-    var user = firebase.auth().currentUser;
-    if (user) {
         var hide = database.ref('Users/' + user.uid + "/hidden");
         hide.once("value").then(function (snapshot) {
             snapshot.forEach(function (hidden) {
                 document.getElementById(hidden.val()).remove();
             })
         })
-    }
 }
 
 function addFavIcon() {
-    var user = firebase.auth().currentUser;
-    if (user) {
         var hide = database.ref('Users/' + user.uid + "/favorites");
         hide.once("value").then(function (snapshot) {
             snapshot.forEach(function (fav) {
@@ -164,7 +191,6 @@ function addFavIcon() {
                 cp.text("★");
             })
         })
-    }
 }
 
 
@@ -405,6 +431,12 @@ function filter() {
 
     }
 }
+
+function activeSearch() {
+    var search = document.getElementById('search');
+    search.focus();
+}
+
 
 function clearSearch() {
     var search = document.getElementById('search');

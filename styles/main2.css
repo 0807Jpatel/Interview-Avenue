@@ -136,6 +136,11 @@ body{
     margin-right: auto;
 }
 
+.footer{
+    bottom: 0px;
+}
+
+
 @media screen and (max-width: 992px) {
     .body-header {
         margin-left: 1%;
