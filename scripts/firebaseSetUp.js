@@ -13,12 +13,14 @@ var loginCounter = 0;
 var UPDATECARD;
 
 var config = {
-    apiKey: "AIzaSyDMINrJm6ARcDPFuBOI3eHNeDPDmZkDNU0",
-    authDomain: "internwebapp-b3703.firebaseapp.com",
-    databaseURL: "https://internwebapp-b3703.firebaseio.com",
-    storageBucket: "internwebapp-b3703.appspot.com",
-    messagingSenderId: "539619981513"
-};
+    apiKey: "AIzaSyAGysWUbCf_ZXOf3x_lDiJ_S4-lvroMed4",
+    authDomain: "interviewavenue.firebaseapp.com",
+    databaseURL: "https://interviewavenue.firebaseio.com",
+    storageBucket: "interviewavenue.appspot.com",
+    messagingSenderId: "867672591721"
+  };
+
+  
 firebase.initializeApp(config);
 
 function openNav() {
