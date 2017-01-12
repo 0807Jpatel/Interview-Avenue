@@ -136,8 +136,6 @@ function init(Company_Data) {
                     cn.append('<li class=\"tag ' + tagIndex.val() + '\">' + tagIndex.val() + "<\/li>");
                 })            // action.append('<li class="fav" id="favid"></li>');
             })
-            hideCards();
-            addFavIcon();
         } else {
             snapshot.forEach(function (company) {
                 var clone = $('#cardtemplate').clone().prop({ id: company.key }).appendTo("#content");
@@ -169,20 +167,27 @@ function init(Company_Data) {
                 cu.css('color', 'grey');
             })
         }
+        hideCards();
+        addFavIcon();
         saveDataLocally();
     })
 }
 
 function hideCards() {
+    var user = firebase.auth().currentUser;
+    if(user){
         var hide = database.ref('Users/' + user.uid + "/hidden");
         hide.once("value").then(function (snapshot) {
             snapshot.forEach(function (hidden) {
                 document.getElementById(hidden.val()).remove();
             })
         })
+    }
 }
 
 function addFavIcon() {
+    var user = firebase.auth().currentUser;
+    if(user){
         var hide = database.ref('Users/' + user.uid + "/favorites");
         hide.once("value").then(function (snapshot) {
             snapshot.forEach(function (fav) {
@@ -191,6 +196,7 @@ function addFavIcon() {
                 cp.text("★");
             })
         })
+    }
 }
 
 
